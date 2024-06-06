@@ -1,6 +1,11 @@
+@import 'theme';
+@import 'palettes';
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+  color: var(--text-color);
 }
 

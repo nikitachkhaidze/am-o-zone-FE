@@ -1,6 +1,11 @@
 [data-theme="light"] {
-  --main-background-color: var(--dark-900);
+  --main-color: var(--dark-900);
   --text-color: var(--dark-100);
+
+  --header-color: var(--accent-light-900);
+  --nav-color: rgb(from var(--accent-light-800) r g b / 50%);
+  --footer-color: rgb(from var(--accent-light-600) r g b / 70%);
+
   --accent-color-1: var(--accent-light-900);
   --accent-color-2: var(--accent-light-800);
   --accent-color-3: var(--accent-light-700);
@@ -8,8 +13,13 @@
 }
 
 [data-theme="dark"] {
-  --main-background-color: var(--dark-100);
-  --text-color: var(--dark-900);
+  --main-color: var(--dark-100);
+  --text-color: var(--dark-800);
+
+  --header-color: rgb(from var(--accent-dark-800) r g b / 30%);
+  --nav-color: rgb(from var(--accent-dark-600) r g b / 50%);
+  --footer-color: rgb(from var(--dark-200) r g b / 70%);
+
   --accent-color-1: var(--accent-dark-900);
   --accent-color-2: var(--accent-dark-800);
   --accent-color-3: var(--accent-dark-700);

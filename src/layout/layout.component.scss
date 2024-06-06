@@ -15,17 +15,24 @@
 .app-layout {
   &__header {
     grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: var(--header-color);
   }
 
   &__navigation {
     grid-area: navigation;
+    background-color: var(--nav-color);
   }
 
   &__main {
     grid-area: main;
+    background-color: var(--main-color);
   }
 
   &__footer {
     grid-area: footer;
+    background-color: var(--footer-color);
   }
 }

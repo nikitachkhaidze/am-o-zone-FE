@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
+
+enum Theme {
+  Light = 'light',
+  Dark = 'dark',
+}
 
 @Component({
   selector: 'app-layout',
@@ -6,5 +11,9 @@ import { Component } from '@angular/core';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
+  @HostBinding('attr.data-theme') theme = Theme.Light;
 
+  toggleTheme() {
+    this.theme = this.theme === Theme.Light ? Theme.Dark : Theme.Light;
+  }
 }
