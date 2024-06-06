@@ -1,0 +1,31 @@
+@use "sass:map";
+
+:host {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "navigation  main"
+    "navigation  footer";
+  grid-template-rows: 10% 1fr 10%;
+  grid-template-columns: 20% 1fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+.app-layout {
+  &__header {
+    grid-area: header;
+  }
+
+  &__navigation {
+    grid-area: navigation;
+  }
+
+  &__main {
+    grid-area: main;
+  }
+
+  &__footer {
+    grid-area: footer;
+  }
+}
