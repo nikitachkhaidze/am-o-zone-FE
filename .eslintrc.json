@@ -23,6 +23,8 @@
         "linebreak-style": ["warn", "windows"],
         "no-console": "off",
         "import/prefer-default-export": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "no-return-assign": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {

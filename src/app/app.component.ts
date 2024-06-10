@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
-import { LayoutComponent } from '../layout/layout.component';
+import {
+  Component, DestroyRef, HostBinding, inject, OnInit,
+} from '@angular/core';
+import { Store } from '@ngxs/store';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Theme } from './types/types';
+import { LayoutComponent } from './layout/layout.component';
+import { AppState } from './state/app.state';
 
 @Component({
   selector: 'am-root',
@@ -8,6 +14,17 @@ import { LayoutComponent } from '../layout/layout.component';
   standalone: true,
   imports: [LayoutComponent],
 })
-export class AppComponent {
-  title = 'am-o-zone-fe';
+export class AppComponent implements OnInit {
+  private destroyRef = inject(DestroyRef);
+
+  @HostBinding('attr.data-theme') theme = Theme.Light;
+
+  constructor(private store: Store) {
+  }
+
+  ngOnInit() {
+    this.store.select(AppState.getTheme)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((theme) => this.theme = theme);
+  }
 }
