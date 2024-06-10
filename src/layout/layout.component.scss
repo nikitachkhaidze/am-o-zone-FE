@@ -13,7 +13,7 @@
   width: 100vw;
 }
 
-.app-layout {
+.am-layout {
   &__header {
     grid-area: header;
     @include mixins.flex(flex-end, center);

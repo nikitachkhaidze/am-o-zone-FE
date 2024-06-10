@@ -6,7 +6,7 @@ enum Theme {
 }
 
 @Component({
-  selector: 'app-layout',
+  selector: 'am-layout',
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
