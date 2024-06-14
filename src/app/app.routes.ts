@@ -1,11 +1,9 @@
 import { Routes } from '@angular/router';
-import { ProductGalleryComponent } from './product-gallery/product-gallery.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   {
     path: 'products',
-    component: ProductGalleryComponent,
+    loadComponent: () => import('./product-gallery/product-gallery.component').then((module) => module.ProductGalleryComponent),
   },
   {
     path: '',
@@ -14,6 +12,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent,
+    loadComponent: () => import('./page-not-found/page-not-found.component').then((module) => module.PageNotFoundComponent),
   },
 ];

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { MatListItem, MatNavList } from '@angular/material/list';
 
 @Component({
   selector: 'am-navigation',
@@ -7,6 +8,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [
     RouterLinkActive,
     RouterLink,
+    MatNavList,
+    MatListItem,
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
