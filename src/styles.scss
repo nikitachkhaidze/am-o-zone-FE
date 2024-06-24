@@ -16,6 +16,9 @@ body {
 }
 
 :root {
-  color: var(--text-color);
+  --text-color-dark: var(--dark-100);
+  --text-color-light: var(--dark-900);
+
+  color: var(--text-color-dark);
 }
 

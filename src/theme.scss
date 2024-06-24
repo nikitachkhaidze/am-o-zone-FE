@@ -1,6 +1,5 @@
 [data-theme="light"] {
-  --main-color: var(--dark-900);
-  --text-color: var(--dark-100);
+  --main-color: var(--dark-800);
 
   --header-color: var(--accent-light-900);
   --nav-color: rgb(from var(--accent-light-800) r g b / 50%);
@@ -14,7 +13,6 @@
 
 [data-theme="dark"] {
   --main-color: var(--dark-100);
-  --text-color: var(--dark-800);
 
   --header-color: rgb(from var(--accent-dark-800) r g b / 30%);
   --nav-color: rgb(from var(--accent-dark-600) r g b / 50%);

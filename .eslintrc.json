@@ -40,7 +40,8 @@
             "prefix": "am",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/lines-between-class-members": "off"
       }
     },
     {

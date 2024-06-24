@@ -1,5 +1,5 @@
 import {
-  Component, DestroyRef, HostBinding, inject, OnInit,
+  Component, DestroyRef, HostBinding, OnInit,
 } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -15,11 +15,9 @@ import { AppState } from './state/app.state';
   imports: [LayoutComponent],
 })
 export class AppComponent implements OnInit {
-  private destroyRef = inject(DestroyRef);
-
   @HostBinding('attr.data-theme') theme = Theme.Light;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private destroyRef: DestroyRef) {
   }
 
   ngOnInit() {

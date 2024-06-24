@@ -1,0 +1,14 @@
+@use "../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(space-between, center);
+  background-color: var(--header-color);
+  color: var(--text-color-light);
+  padding: 0 2.5em;
+}
+
+.am-header {
+  &__logo {
+    font-size: 2em;
+  }
+}

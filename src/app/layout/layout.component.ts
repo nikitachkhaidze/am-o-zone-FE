@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeButtonComponent } from '../shared/theme-button/theme-button.component';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'am-layout',
@@ -12,6 +13,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
     ThemeButtonComponent,
     RouterOutlet,
     NavigationComponent,
+    HeaderComponent,
   ],
 })
 export class LayoutComponent {}
