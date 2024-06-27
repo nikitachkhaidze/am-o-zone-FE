@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { ThemeButtonComponent } from '../shared/theme-button/theme-button.component';
 import { SearchBarComponent } from '../shared/search-bar/search-bar.component';
 
@@ -10,6 +12,8 @@ import { SearchBarComponent } from '../shared/search-bar/search-bar.component';
     ThemeButtonComponent,
     SearchBarComponent,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

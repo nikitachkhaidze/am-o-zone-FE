@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterOutlet } from '@angular/router';
 import { Theme } from './types/types';
 import { LayoutComponent } from './layout/layout.component';
 import { AppState } from './state/app.state';
@@ -12,7 +13,7 @@ import { AppState } from './state/app.state';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true,
-  imports: [LayoutComponent],
+  imports: [LayoutComponent, RouterOutlet],
 })
 export class AppComponent implements OnInit {
   @HostBinding('attr.data-theme') theme = Theme.Light;

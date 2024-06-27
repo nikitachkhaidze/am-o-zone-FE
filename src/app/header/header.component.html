@@ -1,4 +1,12 @@
 <span class="am-header__logo">Am-o-zone</span>
-<am-search-bar [formControl]="searchControl"></am-search-bar>
-<am-theme-button>Toggle Theme</am-theme-button>
+<am-search-bar class="am-header__search-bar" [formControl]="searchControl"></am-search-bar>
+<div class="am-header__actions">
+  <button mat-stroked-button>Welcome! Sign In</button>
+  <button mat-stroked-button>Returns and Orders</button>
+  <button mat-stroked-button>
+    Cart
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+  <am-theme-button>Toggle Theme</am-theme-button>
+</div>
 

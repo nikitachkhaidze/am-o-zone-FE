@@ -1,7 +1,7 @@
 @use "../../mixins" as mixins;
 
 :host {
-  @include mixins.flex(space-between, center);
+  @include mixins.flex(space-between, center, flex, row, 3em);
   background-color: var(--header-color);
   color: var(--text-color-light);
   padding: 0 2.5em;
@@ -10,5 +10,14 @@
 .am-header {
   &__logo {
     font-size: 2em;
+    flex-shrink: 0;
+  }
+
+  &__search-bar {
+    flex-grow: 1;
+  }
+
+  &__actions {
+    @include mixins.flex(center, center, flex, row, 1em);
   }
 }

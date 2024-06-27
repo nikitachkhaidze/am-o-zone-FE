@@ -1,5 +1,6 @@
-@import 'theme';
-@import 'palettes';
+@use 'theme';
+@use 'palettes';
+@use './app/mat-styles/_mat-button.theme';
 
 * {
   box-sizing: border-box;
@@ -13,6 +14,10 @@ html, body {
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.full-width {
+  width: 100%;
 }
 
 :root {
