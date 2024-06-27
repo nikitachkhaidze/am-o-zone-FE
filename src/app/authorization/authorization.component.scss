@@ -1,0 +1,25 @@
+@use "../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(flex-start, center, flex, column);
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--main-color);
+}
+
+.am-authorization {
+  &__sign-in {
+    align-self: start;
+    color: var(--text-color-light);
+  }
+
+  &__form {
+    @include mixins.flex(flex-start, center, flex, column, 1em);
+
+    margin: 1em 0;
+    padding: 2em;
+    border: 1px solid black;
+    border-radius: 5%;
+    background-color: var(--nav-color);
+  }
+}

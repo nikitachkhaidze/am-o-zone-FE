@@ -6,10 +6,12 @@ import { Theme } from '../types/types';
 import { App } from './app.actions';
 
 export interface AppStateModel {
+  appName: string,
   theme: Theme
 }
 
 const defaults = {
+  appName: 'Am-o-zone',
   theme: Theme.Light,
 };
 
@@ -20,7 +22,12 @@ const defaults = {
 @Injectable()
 export class AppState {
   @Selector()
-  static getTheme(state: AppStateModel) {
+  static appName(state: AppStateModel) {
+    return state.appName;
+  }
+
+  @Selector()
+  static theme(state: AppStateModel) {
     return state.theme;
   }
 

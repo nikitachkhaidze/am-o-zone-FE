@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select(AppState.getTheme)
+    this.store.select(AppState.theme)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((theme) => this.theme = theme);
   }

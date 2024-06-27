@@ -1,0 +1,24 @@
+<ng-container *ngIf="appName$ | async as appName">
+  <h1 class="am-logo">{{ appName }}</h1>
+
+  <form class="am-authorization__form"
+        [formGroup]="authorizationForm"
+        (ngSubmit)="onSubmit()">
+    <h2 class="am-authorization__sign-in">Sign In</h2>
+
+    <mat-form-field>
+      <mat-label>Email or login</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+    </mat-form-field>
+
+    <button mat-raised-button class="full-width">Continue</button>
+  </form>
+
+  <h5>New to {{ appName }}?</h5>
+  <button mat-raised-button color="primary" routerLink="/register">Create your {{ appName }} account</button>
+</ng-container>
