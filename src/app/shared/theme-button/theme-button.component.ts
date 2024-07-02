@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngxs/store';
-import { App } from '../../state/app.actions';
+import { App } from '../../state/app/app.actions';
 
 @Component({
   selector: 'am-theme-button',

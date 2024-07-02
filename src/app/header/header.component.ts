@@ -3,12 +3,12 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { ThemeButtonComponent } from '../shared/theme-button/theme-button.component';
 import { SearchBarComponent } from '../shared/search-bar/search-bar.component';
-import { AppState } from '../state/app.state';
+import { AppState } from '../state/app/app.state';
 
 @Component({
   selector: 'am-header',

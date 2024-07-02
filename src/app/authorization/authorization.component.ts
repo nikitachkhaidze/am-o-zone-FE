@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { AppState } from '../state/app.state';
+import { AppState } from '../state/app/app.state';
 
 @Component({
   selector: 'am-authorization',

@@ -12,6 +12,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'register',
+    loadComponent: () => import('./authorization/authorization.component').then((module) => module.AuthorizationComponent),
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     loadComponent: () => import('./page-not-found/page-not-found.component').then((module) => module.PageNotFoundComponent),
   },
