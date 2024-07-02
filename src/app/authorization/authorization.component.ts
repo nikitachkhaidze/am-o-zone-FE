@@ -4,10 +4,11 @@ import { Store } from '@ngxs/store';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { AppState } from '../state/app/app.state';
+import { User } from '../state/user/user.actions';
 
 @Component({
   selector: 'am-authorization',
@@ -32,9 +33,10 @@ export class AuthorizationComponent {
     password: '',
   });
 
-  constructor(private store: Store, private formBuilder: FormBuilder) {
+  constructor(private store: Store, private formBuilder: NonNullableFormBuilder) {
   }
 
   onSubmit() {
+    this.store.dispatch(new User.Login(this.authorizationForm.getRawValue()));
   }
 }
