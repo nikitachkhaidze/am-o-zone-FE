@@ -29,7 +29,7 @@ import { User } from '../state/user/user.actions';
 export class AuthorizationComponent {
   appName$: Observable<string> = this.store.select(AppState.appName);
   authorizationForm = this.formBuilder.group({
-    email: '',
+    username: '',
     password: '',
   });
 

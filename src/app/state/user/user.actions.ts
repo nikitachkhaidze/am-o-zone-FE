@@ -9,4 +9,8 @@ export namespace User {
     constructor(public loginRequestData: UserLoginRequestData) {
     }
   }
+
+  export class Logout {
+    static readonly type = `${SCOPE} Logout`;
+  }
 }

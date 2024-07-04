@@ -6,6 +6,7 @@ import { withNgxsRouterPlugin } from '@ngxs/router-plugin';
 import { provideStore } from '@ngxs/store';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
+import { withNgxsStoragePlugin } from '@ngxs/storage-plugin';
 import { routes } from './app.routes';
 import { AppState } from './state/app/app.state';
 import { UserState } from './state/user/user.state';
@@ -22,6 +23,9 @@ export const appConfig: ApplicationConfig = {
       withNgxsReduxDevtoolsPlugin(),
       withNgxsFormPlugin(),
       withNgxsRouterPlugin(),
+      withNgxsStoragePlugin({
+        keys: ['user.accessToken'],
+      }),
     ),
     {
       provide: ENVIRONMENT_CONFIG,

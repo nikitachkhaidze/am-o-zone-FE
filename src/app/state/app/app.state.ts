@@ -5,7 +5,7 @@ import {
 import { Theme } from '../../types/types';
 import { App } from './app.actions';
 
-export interface AppStateModel {
+interface AppStateModel {
   appName: string,
   theme: Theme
 }
