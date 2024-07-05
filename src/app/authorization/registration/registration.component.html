@@ -1,0 +1,33 @@
+<h1 class="am-logo">{{ appName$ | async }}</h1>
+
+<form class="am-authorization__form"
+      autocomplete="off"
+      [formGroup]="registrationForm"
+      (ngSubmit)="onSubmit()">
+  <h2 class="am-authorization__sign-in">Create account</h2>
+
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matInput type="text" formControlName="username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Re-enter password</mat-label>
+    <input matInput type="password" formControlName="reenterPassword">
+  </mat-form-field>
+
+  <button mat-raised-button class="full-width" type="submit">Register</button>
+</form>
+
+<h5>Already have an account?</h5>
+<button mat-raised-button color="primary" [routerLink]="'/' + routes.login">Sign in</button>

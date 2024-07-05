@@ -4,10 +4,12 @@ import {
 } from '@ngxs/store';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
+import { Navigate } from '@ngxs/router-plugin';
 import { User } from './user.actions';
 import { ENVIRONMENT_CONFIG } from '../../const/injection-tokens.const';
 import { Environment } from '../../../environments/environment.interface';
 import { UserLoginResponseData } from '../../types/api/api-user.interface';
+import { Routes } from '../../types/ui/routes.type';
 
 interface UserStateModel {
   accessToken: string | null;
@@ -54,5 +56,15 @@ export class UserState {
       accessToken: null,
       username: null,
     });
+  }
+
+  @Action(User.Register)
+  register(context: StateContext<UserStateModel>, { registrationRequestData }: User.Register) {
+    return this.httpClient.post<UserLoginResponseData>(`${this.environment.apiUrl}/auth/register`, registrationRequestData)
+      .pipe(
+        tap(() => {
+          context.dispatch(new Navigate([Routes.login]));
+        }),
+      );
   }
 }

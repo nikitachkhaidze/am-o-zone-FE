@@ -7,8 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { AppState } from '../state/app/app.state';
-import { User } from '../state/user/user.actions';
+import { AppState } from '../../state/app/app.state';
+import { User } from '../../state/user/user.actions';
+import { Routes } from '../../types/ui/routes.type';
 
 @Component({
   selector: 'am-authorization',
@@ -32,6 +33,7 @@ export class AuthorizationComponent {
     username: '',
     password: '',
   });
+  routes = Routes;
 
   constructor(private store: Store, private formBuilder: NonNullableFormBuilder) {
   }

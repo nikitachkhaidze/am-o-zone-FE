@@ -9,6 +9,7 @@ import { AsyncPipe } from '@angular/common';
 import { ThemeButtonComponent } from '../shared/theme-button/theme-button.component';
 import { SearchBarComponent } from '../shared/search-bar/search-bar.component';
 import { AppState } from '../state/app/app.state';
+import { Routes } from '../types/ui/routes.type';
 
 @Component({
   selector: 'am-header',
@@ -27,6 +28,7 @@ import { AppState } from '../state/app/app.state';
 })
 export class HeaderComponent implements OnInit {
   appName$: Observable<string> = this.store.select(AppState.appName);
+  routes = Routes;
 
   constructor(private store: Store) {
   }

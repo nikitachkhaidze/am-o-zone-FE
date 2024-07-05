@@ -9,3 +9,9 @@ export interface UserLoginResponseData {
   isAdmin: boolean,
   accessToken: string,
 }
+
+export interface UserRegistrationRequestData {
+  username: string,
+  email: string,
+  password: string,
+}

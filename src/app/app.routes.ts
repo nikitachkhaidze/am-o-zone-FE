@@ -15,12 +15,12 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./authorization/authorization.component').then((module) => module.AuthorizationComponent),
+    loadComponent: () => import('./authorization/authorization/authorization.component').then((module) => module.AuthorizationComponent),
     pathMatch: 'full',
   },
   {
     path: 'register',
-    loadComponent: () => import('./authorization/authorization.component').then((module) => module.AuthorizationComponent),
+    loadComponent: () => import('./authorization/registration/registration.component').then((module) => module.RegistrationComponent),
     pathMatch: 'full',
   },
   {

@@ -1,4 +1,4 @@
-@use "../../mixins" as mixins;
+@use "../../../mixins" as mixins;
 
 :host {
   @include mixins.flex(flex-start, center, flex, column);

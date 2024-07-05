@@ -2,6 +2,7 @@
   <h1 class="am-logo">{{ appName }}</h1>
 
   <form class="am-authorization__form"
+        autocomplete="off"
         [formGroup]="authorizationForm"
         (ngSubmit)="onSubmit()">
     <h2 class="am-authorization__sign-in">Sign In</h2>
@@ -20,5 +21,5 @@
   </form>
 
   <h5>New to {{ appName }}?</h5>
-  <button mat-raised-button color="primary" routerLink="/register">Create your {{ appName }} account</button>
+  <button mat-raised-button color="primary" [routerLink]="'/' + routes.register">Create your {{ appName }} account</button>
 </ng-container>
