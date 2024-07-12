@@ -3,7 +3,7 @@ import {
   Action, Selector, State, StateContext,
 } from '@ngxs/store';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { mergeMap, tap } from 'rxjs';
 import { Navigate } from '@ngxs/router-plugin';
 import { User } from './user.actions';
 import { ENVIRONMENT_CONFIG } from '../../const/injection-tokens.const';
@@ -62,9 +62,7 @@ export class UserState {
   register(context: StateContext<UserStateModel>, { registrationRequestData }: User.Register) {
     return this.httpClient.post<UserLoginResponseData>(`${this.environment.apiUrl}/auth/register`, registrationRequestData)
       .pipe(
-        tap(() => {
-          context.dispatch(new Navigate([Routes.login]));
-        }),
+        mergeMap(() => context.dispatch(new Navigate([Routes.login]))),
       );
   }
 }

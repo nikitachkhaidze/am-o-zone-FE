@@ -1,0 +1,3 @@
+@if (formControlErrors$ | async; as errors) {
+  <span>{{ errors | amValidationErrorMessage : prefix }}</span>
+}
