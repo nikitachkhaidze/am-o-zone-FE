@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component, DestroyRef, HostBinding, OnInit,
 } from '@angular/core';
 import { Store } from '@ngxs/store';
@@ -14,6 +15,7 @@ import { AppState } from './state/app/app.state';
   styleUrl: './app.component.scss',
   standalone: true,
   imports: [LayoutComponent, RouterOutlet],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   @HostBinding('attr.data-theme') theme = Theme.Light;

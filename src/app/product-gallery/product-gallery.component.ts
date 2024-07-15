@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'am-product-gallery',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './product-gallery.component.html',
   styleUrl: './product-gallery.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductGalleryComponent {
 }

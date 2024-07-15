@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { AsyncPipe, CommonModule } from '@angular/common';
@@ -31,6 +31,7 @@ import { ValidationErrorComponent } from '../../shared/validation-error/validati
   ],
   templateUrl: './authorization.component.html',
   styleUrl: './authorization.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthorizationComponent {
   appName$: Observable<string> = this.store.select(AppState.appName);

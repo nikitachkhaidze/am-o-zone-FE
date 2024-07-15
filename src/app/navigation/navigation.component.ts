@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { Routes } from '../types/ui/routes.type';
@@ -14,6 +14,7 @@ import { Routes } from '../types/ui/routes.type';
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
   routes = Routes;

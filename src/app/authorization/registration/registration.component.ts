@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { FormsModule, NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
@@ -26,6 +26,7 @@ import { Routes } from '../../types/ui/routes.type';
   ],
   templateUrl: './registration.component.html',
   styleUrl: '../authorization/authorization.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationComponent {
   appName$: Observable<string> = this.store.select(AppState.appName);

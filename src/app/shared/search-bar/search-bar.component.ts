@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component, DestroyRef, forwardRef, Input, OnInit,
 } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,6 +29,7 @@ import { filter } from 'rxjs';
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchBarComponent implements ControlValueAccessor, OnInit {
   @Input() label: string = 'Search Items';
