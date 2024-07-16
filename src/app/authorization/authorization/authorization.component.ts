@@ -37,12 +37,14 @@ export class AuthorizationComponent {
   appName$: Observable<string> = this.store.select(AppState.appName);
   authorizationForm = this.formBuilder.group({
     username: ['', [
+      Validators.required,
       Validators.minLength(3),
       Validators.maxLength(20),
       Validators.pattern(emailRegexp),
     ]],
     password: ['', [
-      Validators.minLength(3),
+      Validators.required,
+      Validators.minLength(12),
       Validators.maxLength(20),
     ]],
   });
