@@ -14,6 +14,7 @@ import { User } from '../../state/user/user.actions';
 import { Routes } from '../../types/ui/routes.type';
 import { emailRegexp } from '../../const/regexp.const';
 import { ValidationErrorComponent } from '../../shared/validation-error/validation-error.component';
+import { getLengthValidators } from '../../shared/utils/validators';
 
 @Component({
   selector: 'am-authorization',
@@ -38,14 +39,12 @@ export class AuthorizationComponent {
   authorizationForm = this.formBuilder.group({
     username: ['', [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(20),
       Validators.pattern(emailRegexp),
+      ...getLengthValidators(3, 20),
     ]],
     password: ['', [
       Validators.required,
-      Validators.minLength(12),
-      Validators.maxLength(20),
+      ...getLengthValidators(12, 30),
     ]],
   });
   routes = Routes;

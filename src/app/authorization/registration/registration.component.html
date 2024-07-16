@@ -9,21 +9,25 @@
   <mat-form-field>
     <mat-label>Username</mat-label>
     <input matInput type="text" formControlName="username">
+    <mat-error am-validation-error prefix="Username" controlName="username"></mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput type="email" formControlName="email">
+    <mat-error am-validation-error prefix="Email" controlName="email"></mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Password</mat-label>
     <input matInput type="password" formControlName="password">
+    <mat-error am-validation-error prefix="Password" controlName="password"></mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Re-enter password</mat-label>
     <input matInput type="password" formControlName="reenterPassword">
+    <mat-error am-validation-error prefix="Re-enter password" controlName="reenterPassword"></mat-error>
   </mat-form-field>
 
   <button mat-raised-button class="full-width" type="submit">Register</button>

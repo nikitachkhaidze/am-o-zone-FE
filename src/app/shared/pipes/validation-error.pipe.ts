@@ -30,7 +30,7 @@ export class ValidationErrorMessagePipe implements PipeTransform {
         return `should be less than or equal to ${options.max}`;
       case 'minlength':
         return `length should be greater than or equal to ${options.requiredLength}`;
-      case 'maxLength':
+      case 'maxlength':
         return `length should be less than or equal to ${options.requiredLength}`;
       default:
         return 'is not valid';

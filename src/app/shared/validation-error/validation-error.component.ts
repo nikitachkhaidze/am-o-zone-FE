@@ -1,7 +1,11 @@
 import {
   ChangeDetectionStrategy, Component, Injector, Input, OnInit,
 } from '@angular/core';
-import { AbstractControl, FormGroupDirective } from '@angular/forms';
+import { AbstractControl, FormGroupDirective, ValidationErrors } from '@angular/forms';
+import {
+  filter,
+  map, merge, Observable, of,
+} from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { LogService } from '../services/log.service';
 import { ValidationErrorMessagePipe } from '../pipes/validation-error.pipe';
@@ -22,7 +26,8 @@ export class ValidationErrorComponent implements OnInit {
   @Input() controlName?: string;
   @Input() prefix = 'Value';
 
-  formControl!: AbstractControl | null;
+  formControlErrors$?: Observable<ValidationErrors | null | undefined>;
+  private formControl!: AbstractControl | null;
 
   constructor(private injector: Injector, private logService: LogService) {
   }
@@ -37,5 +42,16 @@ export class ValidationErrorComponent implements OnInit {
     } else if (this.controlName) {
       this.formControl = this.injector.get(FormGroupDirective).form.get(this.controlName);
     }
+
+    if (!this.formControl) {
+      return;
+    }
+
+    this.formControlErrors$ = merge(
+      this.formControl.valueChanges,
+      of(this.formControl.errors).pipe(filter((errors) => !!errors)),
+    ).pipe(
+      map(() => this.formControl?.errors),
+    );
   }
 }
