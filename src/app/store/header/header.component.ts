@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { NgLetModule } from 'ng-let';
 import { Navigate } from '@ngxs/router-plugin';
-import { ThemeButtonComponent } from '../shared/theme-button/theme-button.component';
-import { SearchBarComponent } from '../shared/search-bar/search-bar.component';
-import { AppState } from '../state/app/app.state';
-import { Routes } from '../types/ui/routes.type';
-import { UserState } from '../state/user/user.state';
-import { User } from '../state/user/user.actions';
+import { ThemeButtonComponent } from '../../shared/theme-button/theme-button.component';
+import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
+import { AppState } from '../../state/app/app.state';
+import { Routes } from '../../types/ui/routes.type';
+import { UserState } from '../../state/user/user.state';
+import { User } from '../../state/user/user.actions';
 
 @Component({
   selector: 'am-header',

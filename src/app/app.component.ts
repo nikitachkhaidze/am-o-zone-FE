@@ -6,8 +6,8 @@ import { Store } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterOutlet } from '@angular/router';
 import { Theme } from './types/types';
-import { LayoutComponent } from './layout/layout.component';
 import { AppState } from './state/app/app.state';
+import { LayoutComponent } from './store/layout/layout.component';
 
 @Component({
   selector: 'am-root',
