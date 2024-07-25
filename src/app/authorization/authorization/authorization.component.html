@@ -7,21 +7,29 @@
         (ngSubmit)="onSubmit()">
     <h2 class="am-authorization__sign-in">Sign In</h2>
 
-    <mat-form-field hideRequiredMarker>
+    <mat-form-field>
       <mat-label>Username</mat-label>
       <input matInput type="email" formControlName="username">
       <mat-error am-validation-error prefix="Username" controlName="username"></mat-error>
     </mat-form-field>
 
-    <mat-form-field hideRequiredMarker>
+    <mat-form-field>
       <mat-label>Password</mat-label>
       <input matInput type="password" formControlName="password">
       <mat-error am-validation-error prefix="Password" controlName="password"></mat-error>
     </mat-form-field>
 
-    <button mat-raised-button class="full-width" type="submit">Continue</button>
+    <button mat-raised-button
+            class="full-width"
+            type="submit">
+      Continue
+    </button>
   </form>
 
   <h5>New to {{ appName }}?</h5>
-  <button mat-raised-button color="primary" [routerLink]="'/' + routes.register">Create your {{ appName }} account</button>
+  <button mat-raised-button
+          color="primary"
+          [routerLink]="'/' + routes.register">
+    Create your {{ appName }} account
+  </button>
 </ng-container>

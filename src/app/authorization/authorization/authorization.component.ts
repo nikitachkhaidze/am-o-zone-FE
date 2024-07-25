@@ -51,6 +51,11 @@ export class AuthorizationComponent {
   }
 
   onSubmit() {
+    if (this.authorizationForm.invalid) {
+      this.authorizationForm.markAllAsTouched();
+      return;
+    }
+
     this.store.dispatch(new User.Login(this.authorizationForm.getRawValue()));
   }
 }

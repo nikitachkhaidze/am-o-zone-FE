@@ -62,6 +62,11 @@ export class RegistrationComponent {
   }
 
   onSubmit() {
+    if (this.registrationForm.invalid) {
+      this.registrationForm.markAllAsTouched();
+      return;
+    }
+
     this.store.dispatch(new User.Register(this.registrationForm.getRawValue()));
   }
 }
