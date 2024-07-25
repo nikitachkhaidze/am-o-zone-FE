@@ -12,7 +12,6 @@ import { RouterLink } from '@angular/router';
 import { AppState } from '../../state/app/app.state';
 import { User } from '../../state/user/user.actions';
 import { Routes } from '../../types/ui/routes.type';
-import { emailRegexp } from '../../const/regexp.const';
 import { ValidationErrorComponent } from '../../shared/validation-error/validation-error.component';
 import { getLengthValidators } from '../../shared/utils/validators';
 
@@ -39,7 +38,6 @@ export class AuthorizationComponent {
   authorizationForm = this.formBuilder.group({
     username: ['', [
       Validators.required,
-      Validators.pattern(emailRegexp),
       ...getLengthValidators(3, 20),
     ]],
     password: ['', [

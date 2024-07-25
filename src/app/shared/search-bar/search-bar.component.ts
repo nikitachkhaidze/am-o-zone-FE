@@ -54,7 +54,7 @@ export class SearchBarComponent implements ControlValueAccessor, OnInit {
     this.searchControl.setValue(value);
   }
 
-  onClearSearchClicked() {
+  onClearSearchClick() {
     this.searchControl.setValue('');
   }
 

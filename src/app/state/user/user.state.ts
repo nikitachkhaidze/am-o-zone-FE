@@ -47,15 +47,21 @@ export class UserState {
         tap(({ accessToken, username }) => {
           context.patchState({ accessToken, username });
         }),
+        mergeMap(() => context.dispatch(new Navigate([Routes.home]))),
       );
   }
 
   @Action(User.Logout)
   logout(context: StateContext<UserStateModel>) {
-    context.patchState({
-      accessToken: null,
-      username: null,
-    });
+    return context.dispatch(new Navigate([Routes.login]))
+      .pipe(
+        tap(() => {
+          context.patchState({
+            accessToken: null,
+            username: null,
+          });
+        }),
+      );
   }
 
   @Action(User.Register)

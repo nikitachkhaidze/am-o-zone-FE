@@ -3,7 +3,7 @@
   <input matInput type="text" [formControl]="searchControl">
 
   @if (searchControl.value) {
-    <button matSuffix mat-icon-button aria-label="Clear" (click)="onClearSearchClicked()">
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="onClearSearchClick()">
       <mat-icon>close</mat-icon>
     </button>
   }

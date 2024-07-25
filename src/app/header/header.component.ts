@@ -6,10 +6,14 @@ import { RouterLink } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { NgLetModule } from 'ng-let';
+import { Navigate } from '@ngxs/router-plugin';
 import { ThemeButtonComponent } from '../shared/theme-button/theme-button.component';
 import { SearchBarComponent } from '../shared/search-bar/search-bar.component';
 import { AppState } from '../state/app/app.state';
 import { Routes } from '../types/ui/routes.type';
+import { UserState } from '../state/user/user.state';
+import { User } from '../state/user/user.actions';
 
 @Component({
   selector: 'am-header',
@@ -22,6 +26,7 @@ import { Routes } from '../types/ui/routes.type';
     MatIconModule,
     RouterLink,
     AsyncPipe,
+    NgLetModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -29,12 +34,22 @@ import { Routes } from '../types/ui/routes.type';
 })
 export class HeaderComponent implements OnInit {
   appName$: Observable<string> = this.store.select(AppState.appName);
+  isAuthenticated$ = this.store.select(UserState.isAuthenticated);
+
   routes = Routes;
 
   constructor(private store: Store) {
   }
 
   searchControl = new FormControl('');
+
+  onLogoutClick(isAuthenticated: boolean) {
+    if (isAuthenticated) {
+      this.store.dispatch(new User.Logout());
+    } else {
+      this.store.dispatch(new Navigate([Routes.login]));
+    }
+  }
 
   ngOnInit() {
     this.searchControl.valueChanges.subscribe(console.log);

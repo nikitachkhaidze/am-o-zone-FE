@@ -16,7 +16,7 @@ import { App } from '../../state/app/app.actions';
 export class ThemeButtonComponent {
   constructor(private store: Store) {}
 
-  toggleTheme() {
+  onToggleThemeClick() {
     this.store.dispatch(new App.ToggleTheme());
   }
 }
