@@ -1,0 +1,21 @@
+@use "../../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(flex-start, stretch, flex, column);
+
+  .am-product-gallery {
+    &__wrapper {
+      flex: 1 0 auto;
+    }
+
+    &__list {
+      @include mixins.flex(flex-start, stretch, flex, row, 2em);
+      flex-wrap: wrap;
+      padding: 2em 4em;
+
+      > am-product-list-item {
+        flex: 1 0;
+      }
+    }
+  }
+}

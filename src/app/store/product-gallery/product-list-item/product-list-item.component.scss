@@ -1,0 +1,26 @@
+@use '../../../../mixins' as mixins;
+
+:host {
+  @include mixins.flex(flex-start, center, flex, column);
+  padding: 1em;
+  border: 1px solid var(--accent-light-900);
+  border-radius: 2%;
+  cursor: pointer;
+
+  .am-product-list-item {
+    &__img-wrapper {
+      position: relative;
+      width: 20em;
+      height: 20em;
+      margin-bottom: 2em;
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    &__price {
+      font-weight: bold;
+    }
+  }
+}

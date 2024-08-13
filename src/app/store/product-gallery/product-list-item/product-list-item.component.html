@@ -1,0 +1,9 @@
+<h3>{{ product.name }}</h3>
+
+<div class="am-product-list-item__img-wrapper">
+  <img [ngSrc]="product.image" fill priority>
+</div>
+
+<div class="am-product-list-item__price">
+  {{ product.price | currency }}
+</div>

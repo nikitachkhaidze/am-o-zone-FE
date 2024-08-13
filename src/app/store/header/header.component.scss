@@ -20,3 +20,18 @@
     @include mixins.flex(center, center, flex, row, 1em);
   }
 }
+
+@media (max-width: 1024px) {
+  :host {
+    padding: 2.5em;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .am-header {
+    &__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+}
