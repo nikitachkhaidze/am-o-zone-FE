@@ -11,7 +11,7 @@ import { Navigate } from '@ngxs/router-plugin';
 import { ThemeButtonComponent } from '../../shared/theme-button/theme-button.component';
 import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
 import { AppState } from '../../state/app/app.state';
-import { Routes } from '../../types/ui/routes.type';
+import { RootRoutes } from '../../types/ui/routes.type';
 import { UserState } from '../../state/user/user.state';
 import { User } from '../../state/user/user.actions';
 
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
   appName$: Observable<string> = this.store.select(AppState.appName);
   isAuthenticated$ = this.store.select(UserState.isAuthenticated);
 
-  routes = Routes;
+  routes = RootRoutes;
 
   constructor(private store: Store) {
   }
@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
     if (isAuthenticated) {
       this.store.dispatch(new User.Logout());
     } else {
-      this.store.dispatch(new Navigate([Routes.login]));
+      this.store.dispatch(new Navigate([RootRoutes.login]));
     }
   }
 

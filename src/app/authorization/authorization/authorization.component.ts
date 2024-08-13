@@ -11,7 +11,7 @@ import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { AppState } from '../../state/app/app.state';
 import { User } from '../../state/user/user.actions';
-import { Routes } from '../../types/ui/routes.type';
+import { RootRoutes } from '../../types/ui/routes.type';
 import { ValidationErrorComponent } from '../../shared/validation-error/validation-error.component';
 import { getLengthValidators } from '../../shared/utils/validators';
 
@@ -45,7 +45,7 @@ export class AuthorizationComponent {
       ...getLengthValidators(12, 30),
     ]],
   });
-  routes = Routes;
+  routes = RootRoutes;
 
   constructor(private store: Store, private formBuilder: NonNullableFormBuilder) {
   }

@@ -1,7 +1,11 @@
-export enum Routes {
+export enum RootRoutes {
   register = 'register',
   login = 'login',
-  products = 'products',
   store = 'store',
+  admin = 'admin',
   home = '',
+}
+
+export enum StoreRoutes {
+  products = 'products',
 }

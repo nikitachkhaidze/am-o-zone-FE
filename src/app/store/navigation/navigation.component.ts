@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatListItem, MatNavList } from '@angular/material/list';
-import { Routes } from '../../types/ui/routes.type';
+import { RootRoutes } from '../../types/ui/routes.type';
 
 @Component({
   selector: 'am-navigation',
@@ -17,5 +17,5 @@ import { Routes } from '../../types/ui/routes.type';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
-  routes = Routes;
+  routes = RootRoutes;
 }

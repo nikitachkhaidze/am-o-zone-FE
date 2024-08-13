@@ -1,17 +1,19 @@
 import { Route } from '@angular/router';
+import { LayoutComponent } from './layout/layout.component';
+import { StoreRoutes } from '../types/ui/routes.type';
 
 export const storeRoutes: Route[] = [
   {
     path: '',
-    loadComponent: () => import('./layout/layout.component').then((module) => module.LayoutComponent),
+    component: LayoutComponent,
     children: [
       {
         path: '',
-        redirectTo: 'products',
+        redirectTo: StoreRoutes.products,
         pathMatch: 'full',
       },
       {
-        path: 'products',
+        path: StoreRoutes.products,
         loadComponent: () => import('./product-gallery/product-gallery.component').then((module) => module.ProductGalleryComponent),
       },
     ],

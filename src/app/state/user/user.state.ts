@@ -9,7 +9,7 @@ import { User } from './user.actions';
 import { ENVIRONMENT_CONFIG } from '../../const/injection-tokens.const';
 import { Environment } from '../../../environments/environment.interface';
 import { UserLoginResponseData } from '../../types/api/api-user.interface';
-import { Routes } from '../../types/ui/routes.type';
+import { RootRoutes } from '../../types/ui/routes.type';
 
 interface UserStateModel {
   accessToken: string | null;
@@ -47,13 +47,13 @@ export class UserState {
         tap(({ accessToken, username }) => {
           context.patchState({ accessToken, username });
         }),
-        mergeMap(() => context.dispatch(new Navigate([Routes.home]))),
+        mergeMap(() => context.dispatch(new Navigate([RootRoutes.home]))),
       );
   }
 
   @Action(User.Logout)
   logout(context: StateContext<UserStateModel>) {
-    return context.dispatch(new Navigate([Routes.login]))
+    return context.dispatch(new Navigate([RootRoutes.login]))
       .pipe(
         tap(() => {
           context.patchState({
@@ -68,7 +68,7 @@ export class UserState {
   register(context: StateContext<UserStateModel>, { registrationRequestData }: User.Register) {
     return this.httpClient.post<UserLoginResponseData>(`${this.environment.apiUrl}/auth/register`, registrationRequestData)
       .pipe(
-        mergeMap(() => context.dispatch(new Navigate([Routes.login]))),
+        mergeMap(() => context.dispatch(new Navigate([RootRoutes.login]))),
       );
   }
 }

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { AppState } from '../../state/app/app.state';
 import { User } from '../../state/user/user.actions';
-import { Routes } from '../../types/ui/routes.type';
+import { RootRoutes } from '../../types/ui/routes.type';
 import { ValidationErrorComponent } from '../../shared/validation-error/validation-error.component';
 import { emailRegexp } from '../../const/regexp.const';
 import { getLengthValidators } from '../../shared/utils/validators';
@@ -56,7 +56,7 @@ export class RegistrationComponent {
       ...getLengthValidators(12, 30),
     ]],
   });
-  routes = Routes;
+  routes = RootRoutes;
 
   constructor(private store: Store, private formBuilder: NonNullableFormBuilder) {
   }
