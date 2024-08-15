@@ -10,6 +10,10 @@
     flex-shrink: 0;
   }
 
+  &__search-bar {
+    flex-grow: 1;
+  }
+
   &__actions {
     @include mixins.flex(center, center, flex, row, 1em);
   }
