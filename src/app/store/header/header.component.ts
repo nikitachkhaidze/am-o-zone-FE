@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -32,7 +32,7 @@ import { User } from '../../state/user/user.actions';
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   appName$: Observable<string> = this.store.select(AppState.appName);
   isAuthenticated$ = this.store.select(UserState.isAuthenticated);
 
@@ -41,17 +41,11 @@ export class HeaderComponent implements OnInit {
   constructor(private store: Store) {
   }
 
-  searchControl = new FormControl('');
-
   onLogoutClick(isAuthenticated: boolean) {
     if (isAuthenticated) {
       this.store.dispatch(new User.Logout());
     } else {
       this.store.dispatch(new Navigate([RootRoutes.login]));
     }
-  }
-
-  ngOnInit() {
-    this.searchControl.valueChanges.subscribe(console.log);
   }
 }
