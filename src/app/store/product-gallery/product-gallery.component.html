@@ -1,6 +1,6 @@
 <div class="am-product-gallery__wrapper">
   <div class="am-product-gallery__list">
-    @for (product of products; track product.id) {
+    @for (product of products | async; track product._id) {
       <am-product-list-item [product]="product"></am-product-list-item>
     }
   </div>
