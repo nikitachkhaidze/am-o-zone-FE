@@ -1,0 +1,11 @@
+<ng-container *ngLet="product$ | async as product">
+  <h3>{{ product.name }}</h3>
+
+  <div class="am-product-details__img-wrapper">
+    <img [ngSrc]="product.image" fill priority>
+  </div>
+
+  <div class="am-product-details__price">
+    {{ product.price | currency }}
+  </div>
+</ng-container>

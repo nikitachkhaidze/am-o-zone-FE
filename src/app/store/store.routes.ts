@@ -3,6 +3,7 @@ import { provideStates } from '@ngxs/store';
 import { LayoutComponent } from './layout/layout.component';
 import { StoreRoutes } from '../types/ui/routes.type';
 import { ProductsState } from '../state/store/products/products.state';
+import { productResolver } from './resolvers/product.resolver';
 
 export const storeRoutes: Route[] = [
   {
@@ -22,6 +23,13 @@ export const storeRoutes: Route[] = [
       {
         path: StoreRoutes.products,
         loadComponent: () => import('./product-gallery/product-gallery.component').then((module) => module.ProductGalleryComponent),
+      },
+      {
+        path: `${StoreRoutes.products}/:id`,
+        resolve: {
+          product: productResolver,
+        },
+        loadComponent: () => import('./product-gallery/product-details/product-details.component').then((module) => module.ProductDetailsComponent),
       },
     ],
   },

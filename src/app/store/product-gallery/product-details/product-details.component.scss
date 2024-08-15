@@ -1,0 +1,15 @@
+@use "../../../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(flex-start, stretch, flex, column);
+  padding: 2em 4em;
+  flex-grow: 1;
+}
+
+.am-product-details {
+  &__img-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+}

@@ -26,6 +26,8 @@
         "@typescript-eslint/no-namespace": "off",
         "class-methods-use-this": "off",
         "no-return-assign": "off",
+        "no-underscore-dangle": "off",
+        "arrow-body-style": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {

@@ -1,6 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
+import { Store } from '@ngxs/store';
+import { Navigate } from '@ngxs/router-plugin';
 import { Product } from '../../../types/ui/product.interface';
+import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
 
 @Component({
   selector: 'am-product-list-item',
@@ -14,4 +17,12 @@ import { Product } from '../../../types/ui/product.interface';
 })
 export class ProductListItemComponent {
   @Input() product!: Product;
+
+  constructor(private store: Store) {
+  }
+
+  @HostListener('click')
+  navigateToProductDetails() {
+    this.store.dispatch(new Navigate([RootRoutes.store, StoreRoutes.products, this.product._id]));
+  }
 }
