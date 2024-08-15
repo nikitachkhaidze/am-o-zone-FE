@@ -1,16 +1,18 @@
-<h1 class="am-header__logo am-logo">{{ appName$ | async }}</h1>
+<header class="am-header">
+  <h1 class="am-header__logo am-logo">{{ appName$ | async }}</h1>
 
-<am-search-bar class="am-header__search-bar" [formControl]="searchControl"></am-search-bar>
+  <am-search-bar class="am-header__search-bar" [formControl]="searchControl"></am-search-bar>
 
-<div class="am-header__actions" *ngLet="isAuthenticated$ | async as isAuthenticated">
-  <button mat-stroked-button (click)="onLogoutClick(!!isAuthenticated)">
-    {{ isAuthenticated ? 'Logout' : 'Welcome! Sign In'  }}
-  </button>
-  <button mat-stroked-button>Returns and Orders</button>
-  <button mat-stroked-button>
-    Cart
-    <mat-icon>shopping_cart</mat-icon>
-  </button>
-  <am-theme-button>Toggle Theme</am-theme-button>
-</div>
+  <div class="am-header__actions" *ngLet="isAuthenticated$ | async as isAuthenticated">
+    <button mat-stroked-button (click)="onLogoutClick(!!isAuthenticated)">
+      {{ isAuthenticated ? 'Logout' : 'Welcome! Sign In'  }}
+    </button>
+    <button mat-stroked-button>Returns and Orders</button>
+    <button mat-stroked-button>
+      Cart
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <am-theme-button>Toggle Theme</am-theme-button>
+  </div>
+</header>
 

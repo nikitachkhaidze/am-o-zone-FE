@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ThemeButtonComponent } from '../../shared/theme-button/theme-button.component';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'am-layout',
@@ -14,6 +15,7 @@ import { HeaderComponent } from '../header/header.component';
     RouterOutlet,
     NavigationComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
