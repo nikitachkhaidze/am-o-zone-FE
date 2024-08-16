@@ -1,13 +1,11 @@
-import { DestroyRef, Inject, Injectable } from '@angular/core';
+import { DestroyRef, Injectable } from '@angular/core';
 import {
   State, Selector, NgxsOnInit, StateContext, Action,
 } from '@ngxs/store';
-import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Product } from '../../../types/ui/product.interface';
-import { ENVIRONMENT_CONFIG } from '../../../const/injection-tokens.const';
-import { Environment } from '../../../../environments/environment.interface';
 import { Products } from './products.actions';
+import { ProductsService } from '../../../shared/services/products.service';
 
 export interface ProductsStateModel {
   products: Product[];
@@ -27,14 +25,13 @@ export class ProductsState implements NgxsOnInit {
   }
 
   constructor(
-    private httpClient: HttpClient,
     private destroyRef: DestroyRef,
-    @Inject(ENVIRONMENT_CONFIG) private environment: Environment,
+    private productsService: ProductsService,
   ) {
   }
 
   ngxsOnInit(context: StateContext<ProductsStateModel>) {
-    this.httpClient.get<Product[]>(`${this.environment.apiUrl}/products`)
+    this.productsService.getProducts()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((products) => context.dispatch(new Products.Set(products)));
   }

@@ -1,15 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   Action, Selector, State, StateContext,
 } from '@ngxs/store';
-import { HttpClient } from '@angular/common/http';
 import { mergeMap, tap } from 'rxjs';
 import { Navigate } from '@ngxs/router-plugin';
 import { User } from './user.actions';
-import { ENVIRONMENT_CONFIG } from '../../const/injection-tokens.const';
-import { Environment } from '../../../environments/environment.interface';
-import { UserLoginResponseData } from '../../types/api/api-user.interface';
 import { RootRoutes } from '../../types/ui/routes.type';
+import { UserService } from '../../shared/services/user.service';
 
 interface UserStateModel {
   accessToken: string | null;
@@ -25,8 +22,7 @@ interface UserStateModel {
 @Injectable()
 export class UserState {
   constructor(
-    private httpClient: HttpClient,
-    @Inject(ENVIRONMENT_CONFIG) private environment: Environment,
+    private userService: UserService,
   ) {
   }
 
@@ -42,7 +38,7 @@ export class UserState {
 
   @Action(User.Login)
   login(context: StateContext<UserStateModel>, { loginRequestData }: User.Login) {
-    return this.httpClient.post<UserLoginResponseData>(`${this.environment.apiUrl}/auth/login`, loginRequestData)
+    return this.userService.postLogin(loginRequestData)
       .pipe(
         tap(({ accessToken, username }) => {
           context.patchState({ accessToken, username });
@@ -66,7 +62,7 @@ export class UserState {
 
   @Action(User.Register)
   register(context: StateContext<UserStateModel>, { registrationRequestData }: User.Register) {
-    return this.httpClient.post<UserLoginResponseData>(`${this.environment.apiUrl}/auth/register`, registrationRequestData)
+    return this.userService.postRegister(registrationRequestData)
       .pipe(
         mergeMap(() => context.dispatch(new Navigate([RootRoutes.login]))),
       );
