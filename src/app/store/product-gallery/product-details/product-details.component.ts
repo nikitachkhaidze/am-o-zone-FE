@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { AsyncPipe, CurrencyPipe, NgOptimizedImage } from '@angular/common';
-import { map } from 'rxjs';
-import { NgLetModule } from 'ng-let';
+import {
+  AsyncPipe, CurrencyPipe, NgIf, NgOptimizedImage,
+} from '@angular/common';
+import { map, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../../../types/ui/product.interface';
 
 @Component({
   selector: 'am-product-details',
@@ -10,14 +12,14 @@ import { ActivatedRoute } from '@angular/router';
   imports: [
     CurrencyPipe,
     NgOptimizedImage,
-    NgLetModule,
     AsyncPipe,
+    NgIf,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent {
-  product$ = this.activatedRoute.data.pipe(
+  product$: Observable<Product> = this.activatedRoute.data.pipe(
     map((data) => data.product),
   );
 

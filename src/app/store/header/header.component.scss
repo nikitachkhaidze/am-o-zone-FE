@@ -19,7 +19,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (screen and max-width: 1024px) {
   .am-header {
     padding: 2.5em;
     flex-direction: column;

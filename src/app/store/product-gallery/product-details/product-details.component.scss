@@ -1,15 +1,35 @@
 @use "../../../../mixins" as mixins;
 
 :host {
-  @include mixins.flex(flex-start, stretch, flex, column);
-  padding: 2em 4em;
-  flex-grow: 1;
+  @include mixins.flex(flex-start, stretch, flex, row, 2em);
+  padding: 5% 8%;
+  height: 100%;
 }
 
 .am-product-details {
   &__img-wrapper {
+    flex-shrink: 0;
     position: relative;
-    width: 300px;
-    height: 300px;
+    flex-basis: 30%;
+  }
+
+  &__body-wrapper {
+    flex-grow: 1;
+  }
+}
+
+@media (screen and max-width: 1024px) {
+  :host {
+    padding: 1em;
+  }
+
+  .am-product-details {
+    &__img-wrapper {
+      flex-basis: 50%;
+    }
+
+    &__body-wrapper {
+      margin: auto 0;
+    }
   }
 }

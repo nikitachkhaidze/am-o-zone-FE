@@ -25,6 +25,7 @@
 
   &__main {
     grid-area: main;
+    min-height: 50vh;
     background-color: var(--main-color);
   }
 

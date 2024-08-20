@@ -21,6 +21,10 @@ body {
   width: 100%;
 }
 
+img {
+  object-fit: contain;
+}
+
 :root {
   --text-color-dark: var(--dark-100);
   --text-color-light: var(--dark-900);
