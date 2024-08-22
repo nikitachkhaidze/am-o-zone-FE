@@ -1,14 +1,17 @@
 <div class="am-product-gallery__wrapper">
   <div class="am-product-gallery__list">
-    @for (product of products | async; track product._id) {
+    @for (product of products$ | async; track product._id) {
       <am-product-list-item [product]="product"></am-product-list-item>
     }
   </div>
 </div>
 
-<mat-paginator class="am-product-gallery__paginator"
-               [length]="100"
-               [pageSize]="10"
+<mat-paginator *ngIf="paginationSettings$ | async as paginationSettings"
+               class="am-product-gallery__paginator"
+               [length]="paginationSettings.amount"
+               [pageSize]="paginationSettings.pageSize"
+               [pageIndex]="paginationSettings.currentPage"
                [pageSizeOptions]="[5, 10, 25, 100]"
+               (page)="onPageChange($event)"
                aria-label="Select page">
 </mat-paginator>

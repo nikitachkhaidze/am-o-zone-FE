@@ -28,6 +28,7 @@
         "no-return-assign": "off",
         "no-underscore-dangle": "off",
         "arrow-body-style": "off",
+        "max-classes-per-file": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
