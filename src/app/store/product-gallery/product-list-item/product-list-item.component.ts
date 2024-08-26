@@ -23,6 +23,6 @@ export class ProductListItemComponent {
 
   @HostListener('click')
   navigateToProductDetails() {
-    this.store.dispatch(new Navigate([RootRoutes.store, StoreRoutes.products, this.product._id]));
+    this.store.dispatch(new Navigate([RootRoutes.store, StoreRoutes.products, this.product.id]));
   }
 }
