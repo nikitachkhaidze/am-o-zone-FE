@@ -1,8 +1,9 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import {
-  State, Selector, NgxsOnInit, StateContext, Action,
+  State, Selector, StateContext, Action,
 } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { mergeMap } from 'rxjs';
 import { Products } from './products.actions';
 import { ProductsService } from '../../../shared/services/products.service';
 import { ProductsStateModel } from './products.state.model';
@@ -12,14 +13,14 @@ import { ProductsStateModel } from './products.state.model';
   defaults: {
     products: [],
     paginationSettings: {
-      amount: 100,
-      currentPage: 1,
+      total: 100,
+      currentPage: 0,
       pageSize: 10,
     },
   },
 })
 @Injectable()
-export class ProductsState implements NgxsOnInit {
+export class ProductsState {
   @Selector()
   static products(state: ProductsStateModel) {
     return state.products;
@@ -36,12 +37,6 @@ export class ProductsState implements NgxsOnInit {
   ) {
   }
 
-  ngxsOnInit(context: StateContext<ProductsStateModel>) {
-    this.productsService.getProducts()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((products) => context.dispatch(new Products.Set(products)));
-  }
-
   @Action(Products.Set)
   set(context: StateContext<ProductsStateModel>, { products }: Products.Set) {
     context.patchState({ products });
@@ -52,12 +47,27 @@ export class ProductsState implements NgxsOnInit {
     context: StateContext<ProductsStateModel>,
     { paginationSettings }: Products.SetPaginationSettings,
   ) {
-    context.patchState({ paginationSettings });
+    const oldSettings = context.getState().paginationSettings;
+
+    context.patchState({
+      paginationSettings: {
+        ...oldSettings,
+        ...paginationSettings,
+      },
+    });
   }
 
   @Action(Products.GetPage)
-  getPage(context: StateContext<ProductsStateModel>, { page, limit }: Products.GetPage) {
-    return this.productsService.getProducts({ page, limit })
-      .pipe(takeUntilDestroyed(this.destroyRef));
+  getPage(context: StateContext<ProductsStateModel>) {
+    const { currentPage = 1, pageSize = 10 } = context.getState().paginationSettings;
+
+    return this.productsService.getProducts({ page: currentPage + 1, pageSize })
+      .pipe(
+        mergeMap(({ products, total }) => context.dispatch([
+          new Products.Set(products),
+          new Products.SetPaginationSettings({ total }),
+        ])),
+        takeUntilDestroyed(this.destroyRef),
+      );
   }
 }

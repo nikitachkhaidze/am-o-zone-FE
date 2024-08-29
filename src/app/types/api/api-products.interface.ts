@@ -1,4 +1,11 @@
+import { Product } from '../ui/product.interface';
+
 export interface GetProductsRequestParams {
   page: number,
-  limit: number,
+  pageSize: number,
+}
+
+export interface GetProductsResponse {
+  total: number,
+  products: Product[],
 }

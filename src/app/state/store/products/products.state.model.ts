@@ -6,7 +6,7 @@ export interface ProductsStateModel {
 }
 
 export interface PaginationSettings {
-  amount: number,
-  pageSize: number,
-  currentPage: number,
+  total?: number,
+  pageSize?: number,
+  currentPage?: number,
 }

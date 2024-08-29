@@ -20,11 +20,5 @@ export namespace Products {
 
   export class GetPage {
     static readonly type = `${SCOPE} Get Page`;
-
-    constructor(
-      public page: number,
-      public limit: number,
-    ) {
-    }
   }
 }

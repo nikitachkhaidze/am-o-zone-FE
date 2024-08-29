@@ -2,6 +2,7 @@
 
 :host {
   @include mixins.flex(flex-start, stretch, flex, column);
+  height: 100%;
 
   .am-product-gallery {
     &__wrapper {
