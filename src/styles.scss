@@ -2,6 +2,8 @@
 @use 'palettes';
 @use 'typography';
 @use './app/mat-styles/_mat-button.theme';
+@use './app/mat-styles/_mat-nav-list.theme';
+@use './app/mat-styles/_mat-icon.theme';
 
 * {
   box-sizing: border-box;
@@ -15,6 +17,10 @@ html, body {
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  &:has(.am-layout__side-panel) {
+    overflow: hidden;
+  }
 }
 
 .full-width {

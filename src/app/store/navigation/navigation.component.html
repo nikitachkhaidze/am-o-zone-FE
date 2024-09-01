@@ -1,4 +1,8 @@
-<mat-nav-list>
+<mat-nav-list class="am-nav-list am-nav-list--horizontal">
+  <a mat-list-item (click)="sidePanelToggled.emit()">
+    <mat-icon class="am-navigation__burger-icon">menu</mat-icon>
+    <span>Catalog</span>
+  </a>
   <a mat-list-item routerLink="/123">Home</a>
   <a mat-list-item [routerLink]="'/' + routes.store">Products</a>
 </mat-nav-list>

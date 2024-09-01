@@ -1,8 +1,14 @@
 <am-header class="am-layout__header"></am-header>
 <nav class="am-layout__navigation">
-  <am-navigation></am-navigation>
+  <am-navigation (sidePanelToggled)="onSidePanelToggled()"></am-navigation>
 </nav>
 <main class="am-layout__main">
+  @if (showSidePanel) {
+    <div class="am-layout__side-panel">
+      <am-product-catalog></am-product-catalog>
+    </div>
+    <div class="am-layout__side-panel-backdrop"></div>
+  }
   <router-outlet></router-outlet>
 </main>
 <am-footer class="am-layout__footer"></am-footer>

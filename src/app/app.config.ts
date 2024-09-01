@@ -4,10 +4,10 @@ import { withNgxsReduxDevtoolsPlugin } from '@ngxs/devtools-plugin';
 import { withNgxsFormPlugin } from '@ngxs/form-plugin';
 import { withNgxsRouterPlugin } from '@ngxs/router-plugin';
 import { provideStore } from '@ngxs/store';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { withNgxsStoragePlugin } from '@ngxs/storage-plugin';
 import { provideToastr } from 'ngx-toastr';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { routes } from './app.routes';
 import { AppState } from './state/app/app.state';
 import { UserState } from './state/user/user.state';
@@ -19,7 +19,7 @@ import { NotificationsState } from './state/notifications/notifications.state';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withComponentInputBinding()),
-    provideAnimations(),
+    provideAnimationsAsync(),
     provideToastr(),
     provideHttpClient(),
     provideStore(

@@ -23,8 +23,32 @@
     background-color: var(--nav-color);
   }
 
+  &__side-panel {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: var(--main-color);
+    padding: 1em;
+    transition: 0.5s;
+  }
+
+  &__side-panel-backdrop {
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
   &__main {
     grid-area: main;
+    position: relative;
     min-height: 50vh;
     background-color: var(--main-color);
   }

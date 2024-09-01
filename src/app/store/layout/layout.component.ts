@@ -4,6 +4,7 @@ import { ThemeButtonComponent } from '../../shared/theme-button/theme-button.com
 import { NavigationComponent } from '../navigation/navigation.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { ProductCatalogComponent } from '../product-gallery/product-catalog/product-catalog.component';
 
 @Component({
   selector: 'am-layout',
@@ -16,7 +17,14 @@ import { FooterComponent } from '../footer/footer.component';
     NavigationComponent,
     HeaderComponent,
     FooterComponent,
+    ProductCatalogComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  showSidePanel = false;
+
+  onSidePanelToggled() {
+    this.showSidePanel = !this.showSidePanel;
+  }
+}

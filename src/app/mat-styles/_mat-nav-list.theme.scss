@@ -1,0 +1,14 @@
+.mat-mdc-nav-list {
+  &.am-nav-list {
+    &--horizontal {
+      display: flex;
+      gap: 1em;
+      padding: 1em 5em;
+    }
+  }
+
+  .mat-mdc-list-item {
+    width: auto;
+  }
+}
+
