@@ -30,7 +30,7 @@ export class ProductGalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new Products.GetPage());
+    this.store.dispatch([new Products.GetPage(), new Products.GetCategories()]);
   }
 
   onPageChange({ pageIndex, pageSize }: PageEvent) {

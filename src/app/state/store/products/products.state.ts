@@ -17,6 +17,7 @@ import { ProductsStateModel } from './products.state.model';
       currentPage: 0,
       pageSize: 10,
     },
+    categories: [],
   },
 })
 @Injectable()
@@ -29,6 +30,11 @@ export class ProductsState {
   @Selector()
   static paginationSettings(state: ProductsStateModel) {
     return state.paginationSettings;
+  }
+
+  @Selector()
+  static categories(state: ProductsStateModel) {
+    return state.categories;
   }
 
   constructor(
@@ -57,6 +63,11 @@ export class ProductsState {
     });
   }
 
+  @Action(Products.SetCategories)
+  setCategories(context: StateContext<ProductsStateModel>, { categories }: Products.SetCategories) {
+    context.patchState({ categories });
+  }
+
   @Action(Products.GetPage)
   getPage(context: StateContext<ProductsStateModel>) {
     const { currentPage = 1, pageSize = 10 } = context.getState().paginationSettings;
@@ -67,6 +78,15 @@ export class ProductsState {
           new Products.Set(products),
           new Products.SetPaginationSettings({ total }),
         ])),
+        takeUntilDestroyed(this.destroyRef),
+      );
+  }
+
+  @Action(Products.GetCategories)
+  getCategories(context: StateContext<ProductsStateModel>) {
+    return this.productsService.getCategories()
+      .pipe(
+        mergeMap((categories) => context.dispatch(new Products.SetCategories(categories))),
         takeUntilDestroyed(this.destroyRef),
       );
   }

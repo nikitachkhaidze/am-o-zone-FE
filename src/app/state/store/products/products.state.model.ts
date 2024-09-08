@@ -2,7 +2,8 @@ import { Product } from '../../../types/ui/product.interface';
 
 export interface ProductsStateModel {
   products: Product[];
-  paginationSettings: PaginationSettings
+  paginationSettings: PaginationSettings,
+  categories: string[],
 }
 
 export interface PaginationSettings {

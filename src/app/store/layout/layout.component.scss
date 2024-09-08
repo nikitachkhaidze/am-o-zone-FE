@@ -31,8 +31,9 @@
     left: 0;
     z-index: 1;
     background-color: var(--main-color);
-    padding: 1em;
+    padding: 1em 3em;
     transition: 0.5s;
+    overflow: auto;
   }
 
   &__side-panel-backdrop {
