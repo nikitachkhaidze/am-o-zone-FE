@@ -3,6 +3,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Store } from '@ngxs/store';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { NgLetModule } from 'ng-let';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 import { ProductsState } from '../../state/store/products/products.state';
 import { Products } from '../../state/store/products/products.actions';
@@ -17,6 +18,7 @@ import { PaginationSettings } from '../../state/store/products/products.state.mo
     AsyncPipe,
     NgIf,
     NgLetModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './product-gallery.component.html',
   styleUrl: './product-gallery.component.scss',

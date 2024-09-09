@@ -1,6 +1,12 @@
-<div class="am-product-gallery__wrapper">
+<div class="am-product-gallery__wrapper" *ngLet="products$ | async as products">
+  @if (!products?.length) {
+    <div class="am-product-gallery__spinner-wrapper">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+
   <div class="am-product-gallery__list">
-    @for (product of products$ | async; track product.id) {
+    @for (product of products; track product.id) {
       <am-product-list-item [product]="product"></am-product-list-item>
     }
   </div>

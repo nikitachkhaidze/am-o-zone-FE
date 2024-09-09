@@ -9,6 +9,11 @@
       flex: 1 0 auto;
     }
 
+    &__spinner-wrapper {
+      @include mixins.flex(center, center, flex, row);
+      height: 100%;
+    }
+
     &__list {
       @include mixins.flex(flex-start, stretch, flex, row, 2em);
       flex-wrap: wrap;
