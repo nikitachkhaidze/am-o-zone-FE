@@ -1,12 +1,15 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import {
-  State, Selector, StateContext, Action,
+  State, Selector, StateContext, Action, Store,
 } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { mergeMap } from 'rxjs';
+import { RouterState } from '@ngxs/router-plugin';
+import { RouterStateSnapshot } from '@angular/router';
 import { Products } from './products.actions';
 import { ProductsService } from '../../../shared/services/products.service';
 import { ProductsStateModel } from './products.state.model';
+import { GetProductsRequestParams } from '../../../types/api/api-products.interface';
 
 @State<ProductsStateModel>({
   name: 'products',
@@ -40,6 +43,7 @@ export class ProductsState {
   constructor(
     private destroyRef: DestroyRef,
     private productsService: ProductsService,
+    private store: Store,
   ) {
   }
 
@@ -69,10 +73,17 @@ export class ProductsState {
   }
 
   @Action(Products.GetPage)
-  getPage(context: StateContext<ProductsStateModel>) {
+  getPage(context: StateContext<ProductsStateModel>, { queryParams }: Products.GetPage) {
     const { currentPage = 1, pageSize = 10 } = context.getState().paginationSettings;
+    const routerStateSnapshot = this.store.selectSnapshot<RouterStateSnapshot | undefined>(RouterState.state);
 
-    return this.productsService.getProducts({ page: currentPage + 1, pageSize })
+    const getProductsRequestParams: GetProductsRequestParams = {
+      page: currentPage + 1,
+      pageSize,
+      ...queryParams ?? routerStateSnapshot?.root.queryParams,
+    };
+
+    return this.productsService.getProducts(getProductsRequestParams)
       .pipe(
         mergeMap(({ products, total }) => context.dispatch([
           new Products.Set(products),

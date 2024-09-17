@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { AsyncPipe } from '@angular/common';
 import { ProductsState } from '../../../state/store/products/products.state';
+import { Products } from '../../../state/store/products/products.actions';
 
 @Component({
   selector: 'am-product-catalog',
@@ -21,7 +22,13 @@ import { ProductsState } from '../../../state/store/products/products.state';
 })
 export class ProductCatalogComponent {
   categories$ = this.store.select(ProductsState.categories);
+  @Output() categorySelect = new EventEmitter<void>();
 
   constructor(private store: Store) {
+  }
+
+  onCategoryClick(category: string) {
+    this.store.dispatch(new Products.GetPage({ category }));
+    this.categorySelect.emit();
   }
 }

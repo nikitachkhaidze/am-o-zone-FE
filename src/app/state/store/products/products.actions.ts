@@ -1,5 +1,6 @@
 import { Product } from '../../../types/ui/product.interface';
 import { PaginationSettings } from './products.state.model';
+import { GetProductsRequestParams } from '../../../types/api/api-products.interface';
 
 export namespace Products {
   const SCOPE = '[Products]';
@@ -27,6 +28,9 @@ export namespace Products {
 
   export class GetPage {
     static readonly type = `${SCOPE} Get Page`;
+
+    constructor(public queryParams?: GetProductsRequestParams) {
+    }
   }
 
   export class GetCategories {

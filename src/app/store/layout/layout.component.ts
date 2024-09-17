@@ -27,4 +27,8 @@ export class LayoutComponent {
   onSidePanelToggled() {
     this.showSidePanel = !this.showSidePanel;
   }
+
+  onSidePanelClosed() {
+    this.showSidePanel = false;
+  }
 }

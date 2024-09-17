@@ -17,10 +17,20 @@ export class ProductsService {
   ) { }
 
   getProducts(params: GetProductsRequestParams) {
+    let queryParams = new HttpParams()
+      .set('page', params.page ?? 1)
+      .set('pageSize', params.pageSize ?? 10);
+
+    if (params.sort) {
+      queryParams = queryParams.set('sort', params.sort);
+    }
+
+    if (params.category) {
+      queryParams = queryParams.set('category', params.category);
+    }
+
     const options = {
-      params: new HttpParams()
-        .set('page', params.page)
-        .set('pageSize', params.pageSize),
+      params: queryParams,
     };
 
     return this.httpClient.get<GetProductsResponse>(`${this.environment.apiUrl}/products`, options);

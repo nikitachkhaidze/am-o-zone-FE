@@ -1,5 +1,5 @@
 <mat-nav-list>
   @for (category of categories$ | async; track category) {
-    <a mat-list-item>{{ category }}</a>
+    <a mat-list-item (click)="onCategoryClick(category)">{{ category }}</a>
   }
 </mat-nav-list>
