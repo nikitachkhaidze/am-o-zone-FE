@@ -4,5 +4,5 @@
     <span>Catalog</span>
   </a>
   <a mat-list-item routerLink="/123">Home</a>
-  <a mat-list-item [routerLink]="'/' + routes.store">Products</a>
+  <a mat-list-item (click)="onProductsClick()">Products</a>
 </mat-nav-list>

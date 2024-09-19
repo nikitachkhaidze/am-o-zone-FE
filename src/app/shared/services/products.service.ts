@@ -6,6 +6,7 @@ import {
   GetProductsRequestParams,
   GetProductsResponse,
 } from '../../types/api/api-products.interface';
+import { Product } from '../../types/ui/product.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,10 @@ export class ProductsService {
     };
 
     return this.httpClient.get<GetProductsResponse>(`${this.environment.apiUrl}/products`, options);
+  }
+
+  getProductById(id: string) {
+    return this.httpClient.get<Product>(`${this.environment.apiUrl}/products/${id}`);
   }
 
   getCategories() {

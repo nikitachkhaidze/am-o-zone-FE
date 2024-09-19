@@ -28,7 +28,7 @@ export class ProductCatalogComponent {
   }
 
   onCategoryClick(category: string) {
-    this.store.dispatch(new Products.GetPage({ category }));
+    this.store.dispatch(new Products.NavigateToProductSelection({ category }));
     this.categorySelect.emit();
   }
 }

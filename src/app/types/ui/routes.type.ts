@@ -8,4 +8,5 @@ export enum RootRoutes {
 
 export enum StoreRoutes {
   products = 'products',
+  product = 'product',
 }

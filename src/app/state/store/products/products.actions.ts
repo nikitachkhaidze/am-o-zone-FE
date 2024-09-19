@@ -36,4 +36,11 @@ export namespace Products {
   export class GetCategories {
     static readonly type = `${SCOPE} Get Categories`;
   }
+
+  export class NavigateToProductSelection {
+    static readonly type = `${SCOPE} Navigate To Product Selection`;
+
+    constructor(public queryParams?: GetProductsRequestParams) {
+    }
+  }
 }

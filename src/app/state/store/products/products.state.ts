@@ -1,15 +1,18 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import {
-  State, Selector, StateContext, Action, Store,
+  State, Selector, StateContext, Action, Store, NgxsOnInit, Actions,
 } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { mergeMap } from 'rxjs';
-import { RouterState } from '@ngxs/router-plugin';
+import {
+  Navigate, RouterState,
+} from '@ngxs/router-plugin';
 import { RouterStateSnapshot } from '@angular/router';
 import { Products } from './products.actions';
 import { ProductsService } from '../../../shared/services/products.service';
 import { ProductsStateModel } from './products.state.model';
 import { GetProductsRequestParams } from '../../../types/api/api-products.interface';
+import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
 
 @State<ProductsStateModel>({
   name: 'products',
@@ -24,7 +27,7 @@ import { GetProductsRequestParams } from '../../../types/api/api-products.interf
   },
 })
 @Injectable()
-export class ProductsState {
+export class ProductsState implements NgxsOnInit {
   @Selector()
   static products(state: ProductsStateModel) {
     return state.products;
@@ -44,7 +47,12 @@ export class ProductsState {
     private destroyRef: DestroyRef,
     private productsService: ProductsService,
     private store: Store,
+    private actions$: Actions,
   ) {
+  }
+
+  ngxsOnInit() {
+    this.store.dispatch(new Products.GetCategories());
   }
 
   @Action(Products.Set)
@@ -100,5 +108,10 @@ export class ProductsState {
         mergeMap((categories) => context.dispatch(new Products.SetCategories(categories))),
         takeUntilDestroyed(this.destroyRef),
       );
+  }
+
+  @Action(Products.NavigateToProductSelection)
+  navigateToProductSelection(context: StateContext<ProductsStateModel>, { queryParams }: Products.NavigateToProductSelection) {
+    return context.dispatch(new Navigate([`${RootRoutes.store}/${StoreRoutes.products}`], queryParams));
   }
 }

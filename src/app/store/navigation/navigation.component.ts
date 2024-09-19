@@ -4,7 +4,9 @@ import {
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
+import { Store } from '@ngxs/store';
 import { RootRoutes } from '../../types/ui/routes.type';
+import { Products } from '../../state/store/products/products.actions';
 
 @Component({
   selector: 'am-navigation',
@@ -22,6 +24,14 @@ import { RootRoutes } from '../../types/ui/routes.type';
 })
 export class NavigationComponent {
   @Output() sidePanelToggled = new EventEmitter<void>();
-
   routes = RootRoutes;
+
+  constructor(
+    private store: Store,
+  ) {
+  }
+
+  onProductsClick() {
+    this.store.dispatch(new Products.NavigateToProductSelection());
+  }
 }
