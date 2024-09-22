@@ -26,11 +26,15 @@ import { Products } from '../../state/store/products/products.actions';
 export class ProductGalleryComponent {
   products$ = this.store.select(ProductsState.products);
   paginationSettings$ = this.store.select(ProductsState.paginationSettings);
+  readonly pageSize = 10;
 
   constructor(private store: Store) {
   }
 
-  onPageChange({ pageIndex, pageSize }: PageEvent) {
-    this.store.dispatch(new Products.NavigateToProductSelection({ page: pageIndex + 1, pageSize }));
+  onPageChange({ pageIndex }: PageEvent) {
+    this.store.dispatch([
+      new Products.SetPaginationSettings({ currentPageIndex: pageIndex }),
+      new Products.NavigateToProductSelection(),
+    ]);
   }
 }

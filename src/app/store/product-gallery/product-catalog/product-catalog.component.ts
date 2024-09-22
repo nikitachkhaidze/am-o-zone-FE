@@ -6,6 +6,7 @@ import { Store } from '@ngxs/store';
 import { AsyncPipe } from '@angular/common';
 import { ProductsState } from '../../../state/store/products/products.state';
 import { Products } from '../../../state/store/products/products.actions';
+import { Category } from '../../../types/ui/category.interface';
 
 @Component({
   selector: 'am-product-catalog',
@@ -27,8 +28,12 @@ export class ProductCatalogComponent {
   constructor(private store: Store) {
   }
 
-  onCategoryClick(category: string) {
-    this.store.dispatch(new Products.NavigateToProductSelection({ category }));
+  onCategoryClick(category: Category) {
+    this.store.dispatch([
+      new Products.SetPaginationSettings({ currentPageIndex: 0 }),
+      new Products.SetProductSelection({ category }),
+      new Products.NavigateToProductSelection(),
+    ]);
     this.categorySelect.emit();
   }
 }

@@ -1,6 +1,7 @@
 import { Product } from '../../../types/ui/product.interface';
-import { PaginationSettings } from './products.state.model';
+import { PaginationSettings, ProductSelection } from './products.state.model';
 import { GetProductsRequestParams } from '../../../types/api/api-products.interface';
+import { Category } from '../../../types/ui/category.interface';
 
 export namespace Products {
   const SCOPE = '[Products]';
@@ -22,14 +23,14 @@ export namespace Products {
   export class SetCategories {
     static readonly type = `${SCOPE} Set Categories`;
 
-    constructor(public categories: string[]) {
+    constructor(public categories: Category[]) {
     }
   }
 
   export class GetPage {
     static readonly type = `${SCOPE} Get Page`;
 
-    constructor(public queryParams?: GetProductsRequestParams) {
+    constructor(public queryParams: GetProductsRequestParams) {
     }
   }
 
@@ -37,10 +38,14 @@ export namespace Products {
     static readonly type = `${SCOPE} Get Categories`;
   }
 
+  export class SetProductSelection {
+    static readonly type = `${SCOPE} Set Product Selection`;
+
+    constructor(public productSelection: ProductSelection) {
+    }
+  }
+
   export class NavigateToProductSelection {
     static readonly type = `${SCOPE} Navigate To Product Selection`;
-
-    constructor(public queryParams?: GetProductsRequestParams) {
-    }
   }
 }

@@ -14,10 +14,10 @@
 
 <mat-paginator *ngIf="paginationSettings$ | async as paginationSettings"
                class="am-product-gallery__paginator"
-               [length]="paginationSettings.total"
-               [pageSize]="paginationSettings.pageSize"
-               [pageIndex]="paginationSettings.currentPage"
-               [pageSizeOptions]="[10, 25, 100]"
+               [length]="paginationSettings.totalItems"
+               [pageSize]="pageSize"
+               [pageIndex]="paginationSettings.currentPageIndex"
+               [hidePageSize]="true"
                [showFirstLastButtons]="true"
                (page)="onPageChange($event)"
                aria-label="Select page">

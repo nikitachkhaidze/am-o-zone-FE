@@ -1,13 +1,20 @@
 import { Product } from '../../../types/ui/product.interface';
+import { Category } from '../../../types/ui/category.interface';
+import { Sort } from '../../../types/ui/sort.enum';
 
 export interface ProductsStateModel {
   products: Product[];
   paginationSettings: PaginationSettings,
-  categories: string[],
+  categories: Category[],
+  productSelection: ProductSelection;
 }
 
 export interface PaginationSettings {
-  total?: number,
-  pageSize?: number,
-  currentPage?: number,
+  totalItems?: number,
+  currentPageIndex?: number,
+}
+
+export interface ProductSelection {
+  category?: Category,
+  sort?: Sort,
 }

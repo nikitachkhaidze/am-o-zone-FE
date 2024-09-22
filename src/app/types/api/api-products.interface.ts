@@ -1,5 +1,6 @@
 import { Product } from '../ui/product.interface';
 import { Sort } from '../ui/sort.enum';
+import { PaginationSettings } from '../../state/store/products/products.state.model';
 
 export interface GetProductsRequestParams {
   page?: number,
@@ -9,6 +10,6 @@ export interface GetProductsRequestParams {
 }
 
 export interface GetProductsResponse {
-  total: number,
   products: Product[],
+  pagination: PaginationSettings,
 }

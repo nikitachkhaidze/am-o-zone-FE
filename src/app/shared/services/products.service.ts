@@ -7,6 +7,7 @@ import {
   GetProductsResponse,
 } from '../../types/api/api-products.interface';
 import { Product } from '../../types/ui/product.interface';
+import { Category } from '../../types/ui/category.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,6 @@ export class ProductsService {
   }
 
   getCategories() {
-    return this.httpClient.get<string[]>(`${this.environment.apiUrl}/products/categories`);
+    return this.httpClient.get<Category[]>(`${this.environment.apiUrl}/products/categories`);
   }
 }

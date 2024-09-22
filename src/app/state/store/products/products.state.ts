@@ -1,16 +1,15 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import {
-  State, Selector, StateContext, Action, Store, NgxsOnInit, Actions,
+  State, Selector, StateContext, Action, Store, NgxsOnInit,
 } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { mergeMap } from 'rxjs';
 import {
-  Navigate, RouterState,
+  Navigate,
 } from '@ngxs/router-plugin';
-import { RouterStateSnapshot } from '@angular/router';
 import { Products } from './products.actions';
 import { ProductsService } from '../../../shared/services/products.service';
-import { ProductsStateModel } from './products.state.model';
+import { ProductSelection, ProductsStateModel } from './products.state.model';
 import { GetProductsRequestParams } from '../../../types/api/api-products.interface';
 import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
 
@@ -19,10 +18,10 @@ import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
   defaults: {
     products: [],
     paginationSettings: {
-      total: 100,
-      currentPage: 0,
-      pageSize: 10,
+      totalItems: 100,
+      currentPageIndex: 0,
     },
+    productSelection: {},
     categories: [],
   },
 })
@@ -47,7 +46,6 @@ export class ProductsState implements NgxsOnInit {
     private destroyRef: DestroyRef,
     private productsService: ProductsService,
     private store: Store,
-    private actions$: Actions,
   ) {
   }
 
@@ -82,20 +80,18 @@ export class ProductsState implements NgxsOnInit {
 
   @Action(Products.GetPage)
   getPage(context: StateContext<ProductsStateModel>, { queryParams }: Products.GetPage) {
-    const { currentPage = 1, pageSize = 10 } = context.getState().paginationSettings;
-    const routerStateSnapshot = this.store.selectSnapshot<RouterStateSnapshot | undefined>(RouterState.state);
+    const { currentPageIndex = 0 } = context.getState().paginationSettings;
 
     const getProductsRequestParams: GetProductsRequestParams = {
-      page: currentPage + 1,
-      pageSize,
-      ...queryParams ?? routerStateSnapshot?.root.queryParams,
+      page: currentPageIndex + 1,
+      ...queryParams,
     };
 
     return this.productsService.getProducts(getProductsRequestParams)
       .pipe(
-        mergeMap(({ products, total }) => context.dispatch([
+        mergeMap(({ products, pagination }) => context.dispatch([
           new Products.Set(products),
-          new Products.SetPaginationSettings({ total }),
+          new Products.SetPaginationSettings(pagination),
         ])),
         takeUntilDestroyed(this.destroyRef),
       );
@@ -110,8 +106,27 @@ export class ProductsState implements NgxsOnInit {
       );
   }
 
+  @Action(Products.SetProductSelection)
+  setProductSelection(context: StateContext<ProductsStateModel>, { productSelection }: Products.SetProductSelection) {
+    const newProductSelection: ProductSelection = {
+      ...context.getState().productSelection,
+      ...productSelection,
+    };
+
+    context.patchState({ productSelection: newProductSelection });
+  }
+
   @Action(Products.NavigateToProductSelection)
-  navigateToProductSelection(context: StateContext<ProductsStateModel>, { queryParams }: Products.NavigateToProductSelection) {
+  navigateToProductSelection(context: StateContext<ProductsStateModel>) {
+    const productSelection = context.getState().productSelection;
+    const { currentPageIndex = 0 } = context.getState().paginationSettings;
+
+    const queryParams: GetProductsRequestParams = {
+      category: productSelection.category?.id,
+      sort: productSelection.sort,
+      page: currentPageIndex + 1,
+    };
+
     return context.dispatch(new Navigate([`${RootRoutes.store}/${StoreRoutes.products}`], queryParams));
   }
 }
