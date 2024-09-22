@@ -1,5 +1,9 @@
+@use "../../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(flex-start, center, flex, row, 2em);
+  padding: 2em 5em;
+}
+
 .am-navigation {
-  &__burger-icon {
-    margin-right: 0.5em;
-  }
 }

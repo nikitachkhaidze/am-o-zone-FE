@@ -1,8 +1,17 @@
-<mat-nav-list class="am-nav-list am-nav-list--horizontal">
-  <a mat-list-item (click)="sidePanelToggled.emit()">
-    <mat-icon class="am-navigation__burger-icon">menu</mat-icon>
-    <span>Catalog</span>
-  </a>
-  <a mat-list-item routerLink="/123">Home</a>
-  <a mat-list-item (click)="onProductsClick()">Products</a>
-</mat-nav-list>
+<button mat-button
+        color="accent"
+        class="am-button am-button--size-l"
+        (click)="sidePanelToggled.emit()">
+  <mat-icon class="am-navigation__burger-icon">menu</mat-icon>
+  Catalog
+</button>
+
+<form [formGroup]="filtersForm">
+  <mat-form-field color="accent">
+    <mat-label>Sort By:</mat-label>
+    <mat-select formControlName="sort">
+      <mat-option [value]="sortOptions.PriceASC">Lowest price first</mat-option>
+      <mat-option [value]="sortOptions.PriceDESC">Highest price first</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

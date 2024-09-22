@@ -1,6 +1,13 @@
-.mdc-button {
-  &--width-25 {
-    max-width: 25%;
-    flex-basis: 25%;
+.mdc-button.mat-mdc-button {
+  &.am-button {
+    &--size-l {
+      font-size: 1.2em;
+
+      .mat-icon {
+        font-size: 36px;
+        height: 36px;
+        width: 36px;
+      }
+    }
   }
 }
