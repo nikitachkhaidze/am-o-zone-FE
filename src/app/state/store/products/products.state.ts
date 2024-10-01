@@ -1,45 +1,35 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import {
-  State, Selector, StateContext, Action, Store, NgxsOnInit,
+  Action, NgxsOnInit, Selector, State, StateContext, Store,
 } from '@ngxs/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { mergeMap } from 'rxjs';
-import {
-  Navigate,
-} from '@ngxs/router-plugin';
+import { Navigate } from '@ngxs/router-plugin';
 import { Products } from './products.actions';
 import { ProductsService } from '../../../shared/services/products.service';
-import { ProductSelection, ProductsStateModel } from './products.state.model';
-import { GetProductsRequestParams } from '../../../types/api/api-products.interface';
+import { UserFilters, ProductsStateModel } from './products.state.model';
 import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
+import { Sort } from '../../../types/ui/sort.enum';
 
 @State<ProductsStateModel>({
   name: 'products',
   defaults: {
-    products: [],
-    paginationSettings: {
-      totalItems: 100,
-      currentPageIndex: 0,
+    userFilters: {
+      sort: Sort.PriceASC,
     },
-    productSelection: {},
     categories: [],
   },
 })
 @Injectable()
 export class ProductsState implements NgxsOnInit {
   @Selector()
-  static products(state: ProductsStateModel) {
-    return state.products;
-  }
-
-  @Selector()
-  static paginationSettings(state: ProductsStateModel) {
-    return state.paginationSettings;
-  }
-
-  @Selector()
   static categories(state: ProductsStateModel) {
     return state.categories;
+  }
+
+  @Selector()
+  static userFilters(state: ProductsStateModel) {
+    return state.userFilters;
   }
 
   constructor(
@@ -53,48 +43,9 @@ export class ProductsState implements NgxsOnInit {
     this.store.dispatch(new Products.GetCategories());
   }
 
-  @Action(Products.Set)
-  set(context: StateContext<ProductsStateModel>, { products }: Products.Set) {
-    context.patchState({ products });
-  }
-
-  @Action(Products.SetPaginationSettings)
-  setPaginationSettings(
-    context: StateContext<ProductsStateModel>,
-    { paginationSettings }: Products.SetPaginationSettings,
-  ) {
-    const oldSettings = context.getState().paginationSettings;
-
-    context.patchState({
-      paginationSettings: {
-        ...oldSettings,
-        ...paginationSettings,
-      },
-    });
-  }
-
   @Action(Products.SetCategories)
   setCategories(context: StateContext<ProductsStateModel>, { categories }: Products.SetCategories) {
     context.patchState({ categories });
-  }
-
-  @Action(Products.GetPage)
-  getPage(context: StateContext<ProductsStateModel>, { queryParams }: Products.GetPage) {
-    const { currentPageIndex = 0 } = context.getState().paginationSettings;
-
-    const getProductsRequestParams: GetProductsRequestParams = {
-      page: currentPageIndex + 1,
-      ...queryParams,
-    };
-
-    return this.productsService.getProducts(getProductsRequestParams)
-      .pipe(
-        mergeMap(({ products, pagination }) => context.dispatch([
-          new Products.Set(products),
-          new Products.SetPaginationSettings(pagination),
-        ])),
-        takeUntilDestroyed(this.destroyRef),
-      );
   }
 
   @Action(Products.GetCategories)
@@ -106,27 +57,23 @@ export class ProductsState implements NgxsOnInit {
       );
   }
 
-  @Action(Products.SetProductSelection)
-  setProductSelection(context: StateContext<ProductsStateModel>, { productSelection }: Products.SetProductSelection) {
-    const newProductSelection: ProductSelection = {
-      ...context.getState().productSelection,
-      ...productSelection,
+  @Action(Products.SetUserFilters)
+  setUserFilters(context: StateContext<ProductsStateModel>, { userFilters }: Products.SetUserFilters) {
+    const newUserFilters: UserFilters = {
+      ...context.getState().userFilters,
+      ...userFilters,
     };
 
-    context.patchState({ productSelection: newProductSelection });
+    context.patchState({ userFilters: newUserFilters });
   }
 
   @Action(Products.NavigateToProductSelection)
-  navigateToProductSelection(context: StateContext<ProductsStateModel>) {
-    const productSelection = context.getState().productSelection;
-    const { currentPageIndex = 0 } = context.getState().paginationSettings;
-
-    const queryParams: GetProductsRequestParams = {
-      category: productSelection.category?.id,
-      sort: productSelection.sort,
-      page: currentPageIndex + 1,
+  navigateToProductSelection(context: StateContext<ProductsStateModel>, { productSelection }: Products.NavigateToProductSelection) {
+    const queryParams = {
+      sort: context.getState().userFilters.sort,
+      ...productSelection,
     };
 
-    return context.dispatch(new Navigate([`${RootRoutes.store}/${StoreRoutes.products}`], queryParams));
+    return context.dispatch(new Navigate([`${RootRoutes.store}/${StoreRoutes.products}`], queryParams, { queryParamsHandling: 'merge' }));
   }
 }

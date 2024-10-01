@@ -19,7 +19,7 @@ export const storeRoutes: Route[] = [
       {
         path: StoreRoutes.products,
         resolve: {
-          product: productGalleryResolver,
+          products: productGalleryResolver,
         },
         runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         loadComponent: () => import('./product-gallery/product-gallery.component').then((module) => module.ProductGalleryComponent),

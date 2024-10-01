@@ -6,7 +6,19 @@
   <div class="am-product-details__body-wrapper">
     <h2>{{ product.name }}</h2>
 
-    <p class="am-product-details__description">
+    @if (product.size) {
+      <p>
+        Size: {{ product.size }}
+      </p>
+    }
+
+    @if (product.color) {
+      <p>
+        Color: {{ product.color }}
+      </p>
+    }
+
+    <p>
       {{ product.description }}
     </p>
 

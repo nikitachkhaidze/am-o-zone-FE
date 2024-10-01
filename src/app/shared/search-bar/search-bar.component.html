@@ -1,9 +1,9 @@
-<mat-form-field class="full-width">
+<mat-form-field color="accent" class="am-form-field am-form-field--color-inherit full-width">
   <mat-label>{{label}}</mat-label>
   <input matInput type="text" [formControl]="searchControl">
 
   @if (searchControl.value) {
-    <button matSuffix mat-icon-button aria-label="Clear" (click)="onClearSearchClick()">
+    <button matSuffix mat-icon-button (click)="onClearSearchClick()">
       <mat-icon>close</mat-icon>
     </button>
   }

@@ -29,11 +29,7 @@ export class ProductCatalogComponent {
   }
 
   onCategoryClick(category: Category) {
-    this.store.dispatch([
-      new Products.SetPaginationSettings({ currentPageIndex: 0 }),
-      new Products.SetProductSelection({ category }),
-      new Products.NavigateToProductSelection(),
-    ]);
+    this.store.dispatch(new Products.NavigateToProductSelection({ page: 1, category: category.id }));
     this.categorySelect.emit();
   }
 }

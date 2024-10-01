@@ -10,6 +10,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'am-search-bar',
@@ -19,6 +20,7 @@ import { filter } from 'rxjs';
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatButtonModule,
   ],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.scss',

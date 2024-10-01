@@ -50,8 +50,8 @@ export class NavigationComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef),
     ).subscribe(({ sort }) => {
       this.store.dispatch([
-        new Products.SetProductSelection({ sort }),
-        new Products.NavigateToProductSelection(),
+        new Products.SetUserFilters({ sort }),
+        new Products.NavigateToProductSelection({ page: 1 }),
       ]);
     });
   }

@@ -1,1 +1,9 @@
-
+.mat-mdc-form-field {
+  &.am-form-field {
+    &--color-inherit {
+      .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: inherit;
+      }
+    }
+  }
+}
