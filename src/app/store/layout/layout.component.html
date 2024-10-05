@@ -1,8 +1,4 @@
-<am-header class="am-layout__header"></am-header>
-
-<nav class="am-layout__navigation">
-  <am-navigation (sidePanelToggled)="onSidePanelToggled()"></am-navigation>
-</nav>
+<am-header class="am-layout__header" (sidePanelToggled)="onSidePanelToggled()"></am-header>
 
 <main class="am-layout__main">
   @if (showSidePanel) {

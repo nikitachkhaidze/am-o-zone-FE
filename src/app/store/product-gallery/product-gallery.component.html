@@ -1,4 +1,6 @@
 <div class="am-product-gallery__wrapper" *ngLet="products$ | async as products">
+  <am-product-settings></am-product-settings>
+
   @if (!products?.length) {
     <div class="am-product-gallery__spinner-wrapper">
       <mat-spinner></mat-spinner>

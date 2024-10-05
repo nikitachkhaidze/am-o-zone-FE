@@ -1,13 +1,5 @@
-<button mat-button
-        color="accent"
-        class="am-button am-button--size-l"
-        (click)="sidePanelToggled.emit()">
-  <mat-icon class="am-navigation__burger-icon">menu</mat-icon>
-  Catalog
-</button>
-
 <form [formGroup]="filtersForm">
-  <mat-form-field color="accent" class="am-form-field am-form-field--color-inherit">
+  <mat-form-field color="accent">
     <mat-label>Sort By:</mat-label>
     <mat-select formControlName="sort">
       <mat-option [value]="sortOptions.PriceASC">Lowest price first</mat-option>

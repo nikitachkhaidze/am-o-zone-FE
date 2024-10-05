@@ -7,6 +7,7 @@
   .am-product-gallery {
     &__wrapper {
       flex: 1 0 auto;
+      padding: 0 10%;
     }
 
     &__spinner-wrapper {
@@ -17,7 +18,7 @@
     &__list {
       @include mixins.flex(flex-start, stretch, flex, row, 2em);
       flex-wrap: wrap;
-      padding: 2em 4em;
+      padding: 2em 0;
 
       > am-product-list-item {
         flex: 1 0;
@@ -25,3 +26,12 @@
     }
   }
 }
+
+@media (screen and max-width: 1024px) {
+  .am-product-gallery {
+    &__wrapper {
+      padding: 0 2em;
+    }
+  }
+}
+

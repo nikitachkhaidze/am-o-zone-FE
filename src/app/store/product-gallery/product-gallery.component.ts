@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 import { Products } from '../../state/store/products/products.actions';
 import { GetProductsResponse } from '../../types/api/api-products.interface';
+import { ProductSettingsComponent } from './product-settings/product-settings.component';
 
 @Component({
   selector: 'am-product-gallery',
@@ -22,6 +23,7 @@ import { GetProductsResponse } from '../../types/api/api-products.interface';
     NgIf,
     NgLetModule,
     MatProgressSpinnerModule,
+    ProductSettingsComponent,
   ],
   templateUrl: './product-gallery.component.html',
   styleUrl: './product-gallery.component.scss',

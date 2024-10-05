@@ -1,0 +1,12 @@
+@use "../../../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(flex-start, center, flex, row, 2em);
+  margin-top: 2em;
+}
+
+@media (screen and max-width: 1024px) {
+  :host {
+    padding: 2em;
+  }
+}

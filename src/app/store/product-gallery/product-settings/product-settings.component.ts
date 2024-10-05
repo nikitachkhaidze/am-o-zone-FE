@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, Component, DestroyRef, EventEmitter, OnInit, Output,
+  ChangeDetectionStrategy, Component, DestroyRef, OnInit,
 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Store } from '@ngxs/store';
@@ -10,12 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { RootRoutes } from '../../types/ui/routes.type';
-import { Sort } from '../../types/ui/sort.enum';
-import { Products } from '../../state/store/products/products.actions';
+import { RootRoutes } from '../../../types/ui/routes.type';
+import { ProductsState } from '../../../state/store/products/products.state';
+import { Sort } from '../../../types/ui/sort.enum';
+import { Products } from '../../../state/store/products/products.actions';
 
 @Component({
-  selector: 'am-navigation',
+  selector: 'am-product-settings',
   standalone: true,
   imports: [
     MatIcon,
@@ -25,15 +26,14 @@ import { Products } from '../../state/store/products/products.actions';
     MatInputModule,
     MatButtonModule,
   ],
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss',
+  templateUrl: './product-settings.component.html',
+  styleUrl: './product-settings.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavigationComponent implements OnInit {
-  @Output() sidePanelToggled = new EventEmitter<void>();
+export class ProductSettingsComponent implements OnInit {
   routes = RootRoutes;
   filtersForm = this.nonNullableFormBuilder.group({
-    sort: Sort.PriceASC,
+    sort: this.store.selectSnapshot(ProductsState.userFilters).sort,
   });
   sortOptions = Sort;
 

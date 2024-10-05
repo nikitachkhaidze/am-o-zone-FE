@@ -1,7 +1,8 @@
-.mdc-button.mat-mdc-button {
+.mdc-button {
   &.am-button {
     &--size-l {
       font-size: 1.2em;
+      padding: 1.5em;
 
       .mat-icon {
         font-size: 36px;

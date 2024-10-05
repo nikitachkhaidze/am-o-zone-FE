@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, Component, OnInit,
+  ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output,
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +13,7 @@ import { Navigate } from '@ngxs/router-plugin';
 import { ThemeButtonComponent } from '../../shared/theme-button/theme-button.component';
 import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
 import { AppState } from '../../state/app/app.state';
-import { RootRoutes } from '../../types/ui/routes.type';
+import { RootRoutes, StoreRoutes } from '../../types/ui/routes.type';
 import { UserState } from '../../state/user/user.state';
 import { User } from '../../state/user/user.actions';
 
@@ -37,6 +37,7 @@ import { User } from '../../state/user/user.actions';
 export class HeaderComponent implements OnInit {
   appName$: Observable<string> = this.store.select(AppState.appName);
   isAuthenticated$ = this.store.select(UserState.isAuthenticated);
+  @Output() sidePanelToggled = new EventEmitter<void>();
 
   routes = RootRoutes;
 
@@ -55,5 +56,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.searchControl.valueChanges.subscribe(console.log);
+  }
+
+  onCartClick() {
+    this.store.dispatch(new Navigate([RootRoutes.store, StoreRoutes.cart]));
   }
 }

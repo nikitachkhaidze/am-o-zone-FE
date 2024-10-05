@@ -1,7 +1,7 @@
 @use "../../../mixins" as mixins;
 
 .am-header {
-  @include mixins.flex(space-between, center, flex, row, 3em);
+  @include mixins.flex(flex-start, center, flex, row, 3em);
   background-color: var(--header-color);
   color: var(--text-color-light);
   padding: 5em;
@@ -14,8 +14,15 @@
     flex-grow: 1;
   }
 
+  &__search-wrapper {
+    @include mixins.flex(flex-start, center, flex, row, 2em);
+    flex-grow: 1;
+    margin: 0 5em;
+  }
+
   &__actions {
     @include mixins.flex(center, center, flex, row, 1em);
+    margin-left: auto;
   }
 }
 
@@ -25,9 +32,12 @@
     flex-direction: column;
     align-items: stretch;
 
+    &__search-wrapper {
+      margin: 0;
+    }
+
     &__actions {
-      flex-direction: column;
-      align-items: stretch;
+      margin: 0;
     }
   }
 }

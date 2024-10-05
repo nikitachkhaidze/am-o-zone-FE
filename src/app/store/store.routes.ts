@@ -32,6 +32,10 @@ export const storeRoutes: Route[] = [
         loadComponent: () => import('./product-gallery/product-details/product-details.component').then((module) => module.ProductDetailsComponent),
       },
       {
+        path: 'cart',
+        loadComponent: () => import('./cart/cart.component').then((module) => module.CartComponent),
+      },
+      {
         path: '',
         redirectTo: StoreRoutes.products,
         pathMatch: 'full',
