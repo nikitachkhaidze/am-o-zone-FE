@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NgClass } from '@angular/common';
+import {
+  animate, style, transition, trigger,
+} from '@angular/animations';
 import { ThemeButtonComponent } from '../../shared/theme-button/theme-button.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -16,8 +20,43 @@ import { ProductCatalogComponent } from '../product-gallery/product-catalog/prod
     HeaderComponent,
     FooterComponent,
     ProductCatalogComponent,
+    NgClass,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('sidePanelAnimation', [
+      transition(
+        ':enter',
+        [
+          style({ transform: 'translate(-100%)' }),
+          animate('0.2s ease-out', style({ transform: 'none' })),
+        ],
+      ),
+      transition(
+        ':leave',
+        [
+          style({ transform: 'none' }),
+          animate('0.2s ease-out', style({ transform: 'translate(-100%)' })),
+        ],
+      ),
+    ]),
+    trigger('sidePanelBackdropAnimation', [
+      transition(
+        ':enter',
+        [
+          style({ opacity: 0 }),
+          animate('0.2s ease-out', style({ opacity: 0.5 })),
+        ],
+      ),
+      transition(
+        ':leave',
+        [
+          style({ opacity: 0.5 }),
+          animate('0.2s ease-out', style({ opacity: 0 })),
+        ],
+      ),
+    ]),
+  ],
 })
 export class LayoutComponent {
   showSidePanel = false;

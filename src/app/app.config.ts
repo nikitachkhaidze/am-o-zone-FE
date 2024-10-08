@@ -15,6 +15,7 @@ import { ENVIRONMENT_CONFIG } from './const/injection-tokens.const';
 import { environment } from '../environments/environment';
 import { GlobalErrorHandler } from './global-error-handler/global-error-handler';
 import { NotificationsState } from './state/notifications/notifications.state';
+import { CartState } from './state/store/cart/cart.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,6 +28,7 @@ export const appConfig: ApplicationConfig = {
         AppState,
         UserState,
         NotificationsState,
+        CartState,
       ],
       withNgxsReduxDevtoolsPlugin(),
       withNgxsFormPlugin(),

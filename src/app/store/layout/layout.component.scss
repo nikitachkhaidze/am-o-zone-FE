@@ -26,7 +26,6 @@
     z-index: 1;
     background-color: var(--main-color);
     padding: 1em 3em;
-    transition: 0.5s;
     overflow: auto;
   }
 
@@ -45,6 +44,7 @@
     grid-area: main;
     position: relative;
     min-height: 50vh;
+    padding: 0 10%;
     background-color: var(--main-color);
   }
 
@@ -52,3 +52,12 @@
     grid-area: footer;
   }
 }
+
+@media (screen and max-width: 1024px) {
+  .am-layout {
+    &__main {
+      padding: 0 2em;
+    }
+  }
+}
+

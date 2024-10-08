@@ -2,10 +2,14 @@
 
 <main class="am-layout__main">
   @if (showSidePanel) {
-    <div class="am-layout__side-panel">
+    <div class="am-layout__side-panel" [@sidePanelAnimation]>
       <am-product-catalog (categorySelect)="onSidePanelClosed()"></am-product-catalog>
     </div>
-    <div class="am-layout__side-panel-backdrop" (click)="onSidePanelClosed()"></div>
+
+    <div class="am-layout__side-panel-backdrop"
+         [@sidePanelBackdropAnimation]
+         (click)="onSidePanelClosed()">
+    </div>
   }
   <router-outlet></router-outlet>
 </main>

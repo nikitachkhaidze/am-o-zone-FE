@@ -7,7 +7,6 @@
   .am-product-gallery {
     &__wrapper {
       flex: 1 0 auto;
-      padding: 0 10%;
     }
 
     &__spinner-wrapper {
@@ -23,14 +22,6 @@
       > am-product-list-item {
         flex: 1 0;
       }
-    }
-  }
-}
-
-@media (screen and max-width: 1024px) {
-  .am-product-gallery {
-    &__wrapper {
-      padding: 0 2em;
     }
   }
 }
