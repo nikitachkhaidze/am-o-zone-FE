@@ -1,0 +1,18 @@
+@use "../../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(flex-start, stretch, flex, row, 3em);
+  height: 100%;
+  padding: 2em 0;
+}
+
+.am-cart {
+  &__content {
+    flex-basis: 70%;
+  }
+
+  &__summary {
+    flex-basis: 30%;
+    flex-shrink: 0;
+  }
+}

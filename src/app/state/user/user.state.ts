@@ -9,12 +9,14 @@ import { RootRoutes } from '../../types/ui/routes.type';
 import { UserService } from '../../shared/services/user.service';
 
 interface UserStateModel {
+  id: string | null;
   accessToken: string | null;
   username: string | null;
 }
 @State<UserStateModel>({
   name: 'user',
   defaults: {
+    id: null,
     accessToken: null,
     username: null,
   },
@@ -24,6 +26,11 @@ export class UserState {
   constructor(
     private userService: UserService,
   ) {
+  }
+
+  @Selector([UserState])
+  static id(state: UserStateModel) {
+    return state.id;
   }
 
   @Selector([UserState])
@@ -40,8 +47,8 @@ export class UserState {
   login(context: StateContext<UserStateModel>, { loginRequestData }: User.Login) {
     return this.userService.postLogin(loginRequestData)
       .pipe(
-        tap(({ accessToken, username }) => {
-          context.patchState({ accessToken, username });
+        tap(({ id, accessToken, username }) => {
+          context.patchState({ id, accessToken, username });
         }),
         mergeMap(() => context.dispatch(new Navigate([RootRoutes.home]))),
       );
@@ -53,6 +60,7 @@ export class UserState {
       .pipe(
         tap(() => {
           context.patchState({
+            id: null,
             accessToken: null,
             username: null,
           });

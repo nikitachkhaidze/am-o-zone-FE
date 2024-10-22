@@ -5,6 +5,7 @@ import { StoreRoutes } from '../types/ui/routes.type';
 import { ProductsState } from '../state/store/products/products.state';
 import { productResolver } from './resolvers/product.resolver';
 import { productGalleryResolver } from './resolvers/product-gallery.resolver';
+import { cartResolver } from './resolvers/cart.resolver';
 
 export const storeRoutes: Route[] = [
   {
@@ -33,6 +34,9 @@ export const storeRoutes: Route[] = [
       },
       {
         path: 'cart',
+        resolve: {
+          cart: cartResolver,
+        },
         loadComponent: () => import('./cart/cart.component').then((module) => module.CartComponent),
       },
       {

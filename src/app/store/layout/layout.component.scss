@@ -58,6 +58,14 @@
     &__main {
       padding: 0 2em;
     }
+
+    &__side-panel {
+      width: 100%;
+    }
+
+    &__side-panel-backdrop {
+      display: none;
+    }
   }
 }
 
