@@ -4,6 +4,7 @@ import { Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
 import { Product } from '../../../types/ui/product.interface';
 import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
+import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
   selector: 'am-product-list-item',
@@ -11,6 +12,7 @@ import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
   imports: [
     NgOptimizedImage,
     CurrencyPipe,
+    AddToCartComponent,
   ],
   templateUrl: './product-list-item.component.html',
   styleUrl: './product-list-item.component.scss',

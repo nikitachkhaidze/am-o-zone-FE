@@ -5,6 +5,7 @@ import {
 import { map, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../types/ui/product.interface';
+import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 
 @Component({
   selector: 'am-product-details',
@@ -14,6 +15,7 @@ import { Product } from '../../../types/ui/product.interface';
     NgOptimizedImage,
     AsyncPipe,
     NgIf,
+    AddToCartComponent,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',

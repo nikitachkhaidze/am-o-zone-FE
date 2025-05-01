@@ -25,5 +25,9 @@
     <div class="am-product-details__price">
       <b>{{ product.price | currency }}</b>
     </div>
+
+    <am-add-to-cart class="am-product-details__add-to-cart"
+                    [product]="product">
+    </am-add-to-cart>
   </div>
 </ng-container>

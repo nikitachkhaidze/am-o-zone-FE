@@ -16,6 +16,10 @@
   &__body-wrapper {
     flex-grow: 1;
   }
+
+  &__add-to-cart {
+    margin-top: 1em;
+  }
 }
 
 @media (screen and max-width: 1024px) {

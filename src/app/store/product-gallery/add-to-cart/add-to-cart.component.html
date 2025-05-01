@@ -1,0 +1,17 @@
+@if (product.quantityInStock) {
+  @if (!isAdded) {
+    <button mat-flat-button
+            color="primary"
+            (click)="onAddToCartClick($event)">
+      Add To Cart
+    </button>
+  } @else {
+    <button mat-flat-button
+            color="accent">
+      Is in Cart
+      <mat-icon>check</mat-icon>
+    </button>
+  }
+} @else {
+  <span class="am-add-to-cart__out-of-stock">Out of stock</span>
+}
