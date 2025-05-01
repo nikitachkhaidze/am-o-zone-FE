@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { emailRegexp } from '../../const/regexp.const';
+import { emailRegexp } from '../const/regexp.const';
 
 @Pipe({
   name: 'amValidationErrorMessage',

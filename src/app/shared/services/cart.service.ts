@@ -1,9 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngxs/store';
-import { ENVIRONMENT_CONFIG } from '../../const/injection-tokens.const';
+import { ENVIRONMENT_CONFIG } from '../const/injection-tokens.const';
 import { Environment } from '../../../environments/environment.interface';
-import { UserState } from '../../state/user/user.state';
 import { CartItem } from '../../types/api/cart-item.interface';
 
 @Injectable({
@@ -17,8 +16,6 @@ export class CartService {
   ) {}
 
   getItems() {
-    const userId = this.store.selectSnapshot(UserState.id);
-
-    return this.httpClient.get<CartItem[]>(`${this.environment.apiUrl}/cart/${userId}`);
+    return this.httpClient.get<CartItem[]>(`${this.environment.apiUrl}/cart`);
   }
 }

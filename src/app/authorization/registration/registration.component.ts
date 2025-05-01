@@ -13,7 +13,7 @@ import { AppState } from '../../state/app/app.state';
 import { User } from '../../state/user/user.actions';
 import { RootRoutes } from '../../types/ui/routes.type';
 import { ValidationErrorComponent } from '../../shared/validation-error/validation-error.component';
-import { emailRegexp } from '../../const/regexp.const';
+import { emailRegexp } from '../../shared/const/regexp.const';
 import { getLengthValidators } from '../../shared/utils/validators';
 
 @Component({

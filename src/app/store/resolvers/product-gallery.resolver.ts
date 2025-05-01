@@ -21,7 +21,9 @@ export const productGalleryResolver: ResolveFn<GetProductsResponse | void> = (ro
     store.dispatch(new Products.SetUserFilters({ sort }));
   }
 
-  return productsService.getProducts({ page, category, sort: store.selectSnapshot(ProductsState.userFilters).sort })
+  return productsService.getProducts(
+    { page, category, sort: store.selectSnapshot(ProductsState.userFilters).sort },
+  )
     .pipe(
       catchError(() => {
         return store.dispatch(new Notifications.DisplayError(new Error('Could not resolve product selection')));

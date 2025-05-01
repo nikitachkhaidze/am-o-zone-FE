@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ENVIRONMENT_CONFIG } from '../../const/injection-tokens.const';
+import { ENVIRONMENT_CONFIG } from '../const/injection-tokens.const';
 import { Environment } from '../../../environments/environment.interface';
 import {
   UserLoginRequestData,
