@@ -1,0 +1,27 @@
+<div class="am-cart-item__img-wrapper">
+  <img [ngSrc]="cartItem.imgUrl" [alt]="cartItem.name" fill priority>
+</div>
+
+<div>
+  <h2>{{ cartItem.name }}</h2>
+
+  @if (cartItem.size) {
+    <p>
+      Size: {{ cartItem.size }}
+    </p>
+  }
+
+  @if (cartItem.color) {
+    <p>
+      Color: {{ cartItem.color }}
+    </p>
+  }
+
+  <p>
+    {{ cartItem.description }}
+  </p>
+</div>
+
+<div class="am-cart-item__total-price">
+  <b>{{ (cartItem.price * cartItem.quantity) | currency }}</b>
+</div>

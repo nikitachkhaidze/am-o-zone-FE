@@ -15,4 +15,10 @@
     flex-basis: 30%;
     flex-shrink: 0;
   }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 2em;
+    }
+  }
 }

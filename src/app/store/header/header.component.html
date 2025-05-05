@@ -1,5 +1,5 @@
 <header class="am-header">
-  <h1 class="am-header__logo am-logo">{{ appName$ | async }}</h1>
+  <h1 class="am-header__logo am-logo" (click)="navigateToHome()">{{ appName$ | async }}</h1>
 
   <div class="am-header__search-wrapper">
     <button mat-flat-button

@@ -1,0 +1,17 @@
+@use "../../../mixins" as mixins;
+
+:host {
+  @include mixins.flex(flex-start, center, flex, row, 2em);
+}
+
+.am-cart-item {
+  &__img-wrapper {
+      position: relative;
+      width: 10em;
+      height: 10em;
+  }
+
+  &__total-price {
+    margin-left: auto;
+  }
+}

@@ -4,7 +4,6 @@ import {
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
@@ -26,7 +25,6 @@ import { User } from '../../state/user/user.actions';
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
-    RouterLink,
     AsyncPipe,
     NgLetModule,
   ],
@@ -60,5 +58,9 @@ export class HeaderComponent implements OnInit {
 
   onCartClick() {
     this.store.dispatch(new Navigate([RootRoutes.store, StoreRoutes.cart]));
+  }
+
+  navigateToHome() {
+    this.store.dispatch(new Navigate([RootRoutes.home]));
   }
 }
