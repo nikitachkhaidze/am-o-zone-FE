@@ -16,6 +16,16 @@
     flex-shrink: 0;
   }
 
+  &__total {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+  }
+
+  &__order-button {
+    width: 100%;
+    margin-top: 1em;
+  }
+
   &__item {
     &:not(:last-child) {
       margin-bottom: 2em;
