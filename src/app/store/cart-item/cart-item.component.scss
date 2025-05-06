@@ -6,13 +6,47 @@
 
 .am-cart-item {
   &__img-wrapper {
-      position: relative;
-      width: 10em;
-      height: 10em;
+    position: relative;
+    width: 10em;
+    height: 10em;
+    flex-basis: 20%;
+  }
+
+  &__description-wrapper {
+    flex-basis: 50%;
   }
 
   &__price-container {
     @include mixins.flex(flex-start, center, flex, row, 2em);
     margin-left: auto;
+    flex-basis: 30%;
+    flex-grow: 0;
+  }
+
+  &__quantity {
+    width: 150px;
+  }
+
+  &__price {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
+
+@media (screen and max-width: 1024px) {
+  :host {
+    gap: 1em;
+  }
+
+  .am-cart-item {
+    &__price-container {
+      gap: 1em;
+    }
+
+    &__quantity {
+      width: 100px;
+    }
+  }
+}
+

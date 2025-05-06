@@ -27,7 +27,7 @@
   }
 }
 
-@media (screen and max-width: 1024px) {
+@media (screen and max-width: 1450px) {
   .am-header {
     padding: 2.5em;
     flex-direction: column;
@@ -39,6 +39,7 @@
 
     &__actions {
       margin: 0;
+      justify-content: flex-start;
     }
   }
 }

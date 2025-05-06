@@ -2,7 +2,7 @@
   <img [ngSrc]="cartItem.imgUrl" [alt]="cartItem.name" fill priority>
 </div>
 
-<div>
+<div class="am-cart-item__description-wrapper">
   <h2>{{ cartItem.name }}</h2>
 
   @if (cartItem.size) {
@@ -24,7 +24,7 @@
 
 
 <div class="am-cart-item__price-container">
-  <mat-form-field [hideRequiredMarker]="true">
+  <mat-form-field [hideRequiredMarker]="true" class="am-cart-item__quantity">
     <mat-label>Quantity</mat-label>
     <input matInput
            type="number"
@@ -40,8 +40,8 @@
     <mat-error am-validation-error [control]="quantityControl" prefix="Item quantity"></mat-error>
   </mat-form-field>
 
-  <div>
-    <b>{{ (cartItem.price * cartItem.quantity) | currency }}</b>
+  <div class="am-cart-item__price">
+    <b>{{ (cartItem.price * quantityControl.value) | currency }}</b>
   </div>
 </div>
 
