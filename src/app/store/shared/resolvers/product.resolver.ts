@@ -3,10 +3,10 @@ import { inject } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
 import { catchError } from 'rxjs';
-import { Product } from '../../types/ui/product.interface';
-import { Notifications } from '../../state/notifications/notifications.actions';
-import { RootRoutes, StoreRoutes } from '../../types/ui/routes.type';
-import { ProductsService } from '../../shared/services/products.service';
+import { Product } from '../../../types/ui/product.interface';
+import { Notifications } from '../../../state/notifications/notifications.actions';
+import { RootRoutes, StoreRoutes } from '../../../types/ui/routes.type';
+import { ProductsService } from '../../../shared/services/products.service';
 
 export const productResolver: ResolveFn<Product | void> = (route) => {
   const productsService = inject(ProductsService);

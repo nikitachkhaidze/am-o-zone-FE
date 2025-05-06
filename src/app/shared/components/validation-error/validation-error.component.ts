@@ -7,8 +7,8 @@ import {
   map, merge, Observable, of,
 } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { LogService } from '../services/log.service';
-import { ValidationErrorMessagePipe } from '../pipes/validation-error.pipe';
+import { LogService } from '../../services/log.service';
+import { ValidationErrorMessagePipe } from '../../pipes/validation-error.pipe';
 
 @Component({
   selector: '[am-validation-error]',

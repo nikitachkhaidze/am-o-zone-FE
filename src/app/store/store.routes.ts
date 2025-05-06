@@ -3,9 +3,9 @@ import { provideStates } from '@ngxs/store';
 import { LayoutComponent } from './layout/layout.component';
 import { StoreRoutes } from '../types/ui/routes.type';
 import { ProductsState } from '../state/store/products/products.state';
-import { productResolver } from './resolvers/product.resolver';
-import { productGalleryResolver } from './resolvers/product-gallery.resolver';
-import { cartResolver } from './resolvers/cart.resolver';
+import { productResolver } from './shared/resolvers/product.resolver';
+import { productGalleryResolver } from './shared/resolvers/product-gallery.resolver';
+import { cartResolver } from './shared/resolvers/cart.resolver';
 
 export const storeRoutes: Route[] = [
   {

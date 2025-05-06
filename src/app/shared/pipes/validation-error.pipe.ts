@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
-import { emailRegexp } from '../const/regexp.const';
+import { emailRegexp, onlyIntegerRegExp } from '../const/regexp.const';
 
 @Pipe({
   name: 'amValidationErrorMessage',
@@ -41,6 +41,8 @@ export class ValidationErrorMessagePipe implements PipeTransform {
     switch (pattern) {
       case emailRegexp:
         return 'should be an email';
+      case onlyIntegerRegExp:
+        return 'should be a whole number';
       default:
         return 'is not valid';
     }

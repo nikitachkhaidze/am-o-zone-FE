@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 import { AppState } from '../../state/app/app.state';
 import { User } from '../../state/user/user.actions';
 import { RootRoutes } from '../../types/ui/routes.type';
-import { ValidationErrorComponent } from '../../shared/validation-error/validation-error.component';
+import { ValidationErrorComponent } from '../../shared/components/validation-error/validation-error.component';
 import { getLengthValidators } from '../../shared/utils/validators';
 
 @Component({

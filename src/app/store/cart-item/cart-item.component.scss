@@ -11,7 +11,8 @@
       height: 10em;
   }
 
-  &__total-price {
+  &__price-container {
+    @include mixins.flex(flex-start, center, flex, row, 2em);
     margin-left: auto;
   }
 }

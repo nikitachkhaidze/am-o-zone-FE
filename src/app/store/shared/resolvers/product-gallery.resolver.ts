@@ -4,12 +4,12 @@ import { Store } from '@ngxs/store';
 import {
   catchError,
 } from 'rxjs';
-import { Notifications } from '../../state/notifications/notifications.actions';
-import { Products } from '../../state/store/products/products.actions';
-import { ProductsService } from '../../shared/services/products.service';
-import { isSort } from '../../types/type-guards';
-import { ProductsState } from '../../state/store/products/products.state';
-import { GetProductsResponse } from '../../types/api/api-products.interface';
+import { Notifications } from '../../../state/notifications/notifications.actions';
+import { Products } from '../../../state/store/products/products.actions';
+import { ProductsService } from '../../../shared/services/products.service';
+import { isSort } from '../../../types/type-guards';
+import { ProductsState } from '../../../state/store/products/products.state';
+import { GetProductsResponse } from '../../../types/api/api-products.interface';
 
 export const productGalleryResolver: ResolveFn<GetProductsResponse | void> = (route) => {
   const store = inject(Store);

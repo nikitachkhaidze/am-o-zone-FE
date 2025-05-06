@@ -30,6 +30,7 @@
         "arrow-body-style": "off",
         "max-classes-per-file": "off",
         "prefer-destructuring": "off",
+        "max-len": ["error", 160],
         "@angular-eslint/directive-selector": [
           "error",
           {

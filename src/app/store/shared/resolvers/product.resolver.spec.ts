@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
 import { productResolver } from './product.resolver';
-import { Product } from '../../types/ui/product.interface';
+import { Product } from '../../../types/ui/product.interface';
 
 describe('productResolver', () => {
   const executeResolver: ResolveFn<Product | void> = (...resolverParameters) => {

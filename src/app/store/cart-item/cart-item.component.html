@@ -22,6 +22,26 @@
   </p>
 </div>
 
-<div class="am-cart-item__total-price">
-  <b>{{ (cartItem.price * cartItem.quantity) | currency }}</b>
+
+<div class="am-cart-item__price-container">
+  <mat-form-field [hideRequiredMarker]="true">
+    <mat-label>Quantity</mat-label>
+    <input matInput
+           type="number"
+           [amSetToNearestValidValueOnBlur]="{
+              min: 1,
+              max: cartItem.quantityInStock,
+              default: 1
+           }"
+           [min]="1"
+           [max]="cartItem.quantityInStock"
+           [step]="1"
+           [formControl]="quantityControl">
+    <mat-error am-validation-error [control]="quantityControl" prefix="Item quantity"></mat-error>
+  </mat-form-field>
+
+  <div>
+    <b>{{ (cartItem.price * cartItem.quantity) | currency }}</b>
+  </div>
 </div>
+

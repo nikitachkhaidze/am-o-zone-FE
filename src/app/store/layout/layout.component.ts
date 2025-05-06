@@ -4,7 +4,7 @@ import { NgClass } from '@angular/common';
 import {
   animate, style, transition, trigger,
 } from '@angular/animations';
-import { ThemeButtonComponent } from '../../shared/theme-button/theme-button.component';
+import { ThemeButtonComponent } from '../../shared/components/theme-button/theme-button.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ProductCatalogComponent } from '../product-gallery/product-catalog/product-catalog.component';
@@ -15,12 +15,10 @@ import { ProductCatalogComponent } from '../product-gallery/product-catalog/prod
   styleUrl: './layout.component.scss',
   standalone: true,
   imports: [
-    ThemeButtonComponent,
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
     ProductCatalogComponent,
-    NgClass,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
